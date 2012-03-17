@@ -1,0 +1,142 @@
+{
+    "users": [
+        {
+            "birth_date": {
+                "day": 9,
+                "year": 1976,
+                "month": 9
+            },
+            "instant_messaging_accounts": {
+                "skype": "jonnybbb",
+                "googletalk": "jonnybbb@gmail.com"
+            },
+            "photo_urls": {
+                "medium_thumb": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.57x75.jpg",
+                "thumb": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.30x40.jpg",
+                "mini_thumb": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.18x24.jpg",
+                "maxi_thumb": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.70x93.jpg",
+                "large": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.140x185.jpg"
+            },
+            "time_zone": {
+                "utc_offset": 1,
+                "name": "Europe/Zurich"
+            },
+            "educational_background": {
+                "qualifications": [
+                    "Sun Certified Java Programmer (Standard Edition 5) SCJP 1.5",
+                    "Sun Certified Java Developer SCJD",
+                    "Java Design Patterns Course Certificate"
+                ],
+                "schools": [
+                    {
+                        "subject": null,
+                        "end_date": null,
+                        "degree": null,
+                        "name": "Ernst-Moritz-Arndt Universität Greifswald,",
+                        "begin_date": null,
+                        "notes": null
+                    },
+                    {
+                        "subject": null,
+                        "end_date": null,
+                        "degree": null,
+                        "name": "Universität Utrecht",
+                        "begin_date": null,
+                        "notes": null
+                    }
+                ]
+            },
+            "id": "6628146_33f97b",
+            "premium_services": [
+                "SEARCH",
+                "PRIVATEMESSAGES"
+            ],
+            "interests": "Rennrad, Kultur, Wandern, Badminton, Wein, Kochen",
+            "wants": "Legacy Code to be improved, Refactoring / Reengineering projects,",
+            "organisation_member": "Java User Group Switzerland (JUGS)",
+            "badges": [
+                "PREMIUM"
+            ],
+            "first_name": "Johannes",
+            "last_name": "Bühler",
+            "gender": "m",
+            "display_name": "Johannes Bühler",
+            "permalink": "https://www.xing.com/profile/Johannes_Buehler",
+            "languages": {
+                "en": null,
+                "de": null
+            },
+            "page_name": "Johannes_Buehler",
+            "business_address": {
+                "fax": null,
+                "mobile_phone": "41|79|8148119",
+                "phone": "41|61|2289444",
+                "zip_code": "4051",
+                "country": "CH",
+                "province": "Basel-Stadt",
+                "city": "Basel",
+                "street": "Kirschgartenstrasse 5",
+                "email": "johannes.buehler@canoo.com"
+            },
+            "private_address": {
+                "fax": null,
+                "mobile_phone": "49|79|8148119",
+                "phone": "41|61|3013714",
+                "zip_code": "4054",
+                "country": "DE",
+                "province": null,
+                "city": "Basel",
+                "street": "In den Ziegelhöfen 101",
+                "email": "johannesbuehler@oderbruecke.de"
+            },
+            "haves": "Groovy, Gradle, Java, Git Training, Refactoring, Working Effective with Legacy Code, WebServices, Spring, JSF, Testing, TDD, JMS, Hibernate, JPA, JEE 5, Bea Weblogic,  Geoinformatik, GIS, OGC, WMS, WFS, GML, Oracle, Spatial, Postgresql, Postgis, Linux, SCJP, SCJD, Teamcity, IntelliJ Idea",
+            "web_profiles": {
+                "homepage": [
+                    "http://www.oderbruecke.de"
+                ]
+            },
+            "active_email": "johannesbuehler@oderbruecke.de",
+            "professional_experience": {
+                "non_primary_companies": [
+                    {
+                        "industry": "FINANCIAL_SERVICES",
+                        "company_size": "1001-5000",
+                        "end_date": "2008-12",
+                        "tag": "POSTFINANCE",
+                        "name": "PostFinance",
+                        "url": "http://www.postfinance.ch",
+                        "career_level": "PROFESSIONAL_EXPERIENCED",
+                        "title": "Software Engineer",
+                        "begin_date": "2007-09",
+                        "description": "Applikationsverantwortlicher für ein internes WebFramework, Software Entwickler"
+                    },
+                    {
+                        "industry": "INFORMATION_TECHNOLOGY_AND_SERVICES",
+                        "company_size": "11-50",
+                        "end_date": "2007-08",
+                        "tag": "GEOTASKAG",
+                        "name": "Geotask AG",
+                        "url": "http://www.geotask.ch",
+                        "career_level": "ENTRY_LEVEL",
+                        "title": "Software Engineer",
+                        "begin_date": "2004-10",
+                        "description": null
+                    }
+                ],
+                "awards": [],
+                "primary_company": {
+                    "industry": "INFORMATION_TECHNOLOGY_AND_SERVICES",
+                    "company_size": "11-50",
+                    "end_date": null,
+                    "tag": "CANOOENGINEERINGAG",
+                    "name": "Canoo Engineering AG",
+                    "url": "http://www.canoo.com",
+                    "career_level": "PROFESSIONAL_EXPERIENCED",
+                    "title": "Senior Software Engineer",
+                    "begin_date": "2009-01",
+                    "description": null
+                }
+            }
+        }
+    ]
+}
