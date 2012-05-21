@@ -1,8 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <users>
     <user>
+        <haves>Groovy, Gradle, Java, Git Training, Refactoring, Working Effective with Legacy Code, WebServices, Spring, JSF, Testing, TDD, JMS, Hibernate, JPA, JEE 5, Bea Weblogic,  Geoinformatik, GIS, OGC, WMS, WFS, GML, Oracle, Spatial, Postgresql, Postgis, Linux, SCJP, SCJD, Teamcity, IntelliJ Idea</haves>
+        <birth_date>
+            <month>9</month>
+            <year>1976</year>
+            <day>9</day>
+        </birth_date>
+        <languages>
+            <en>FLUENT</en>
+            <de>NATIVE</de>
+        </languages>
         <first_name>Johannes</first_name>
+        <page_name>Johannes_Buehler</page_name>
+        <photo_urls>
+            <thumb>https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.30x40.jpg</thumb>
+            <medium_thumb>https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.57x75.jpg</medium_thumb>
+            <maxi_thumb>https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.70x93.jpg</maxi_thumb>
+            <large>https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.140x185.jpg</large>
+            <mini_thumb>https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.18x24.jpg</mini_thumb>
+        </photo_urls>
+        <active_email>johannesbuehler@oderbruecke.de</active_email>
+        <badges>
+            <badge>PREMIUM</badge>
+        </badges>
+        <web_profiles>
+            <homepage>
+                <homepage>http://www.oderbruecke.de</homepage>
+            </homepage>
+        </web_profiles>
+        <premium_services>
+            <premium_service>SEARCH</premium_service>
+            <premium_service>PRIVATEMESSAGES</premium_service>
+        </premium_services>
+        <interests>Rennrad, Kultur, Wandern, Badminton, Wein, Kochen</interests>
+        <business_address>
+            <email>johannes.buehler@canoo.com</email>
+            <zip_code>4051</zip_code>
+            <phone>41|61|2289444</phone>
+            <city>Basel</city>
+            <mobile_phone>41|79|8148119</mobile_phone>
+            <province>Basel-Stadt</province>
+            <fax nil="true"></fax>
+            <street>Kirschgartenstrasse 5</street>
+            <country>CH</country>
+        </business_address>
+        <permalink>https://www.xing.com/profile/Johannes_Buehler</permalink>
+        <gender>m</gender>
+        <instant_messaging_accounts>
+            <skype>jonnybbb</skype>
+            <googletalk>jonnybbb@gmail.com</googletalk>
+        </instant_messaging_accounts>
+        <time_zone>
+            <name>Europe/Zurich</name>
+            <utc_offset>1.0</utc_offset>
+        </time_zone>
+        <wants>Legacy Code to be improved, Refactoring / Reengineering projects,</wants>
+        <professional_experience>
+            <awards/>
+            <non_primary_companies>
+                <non_primary_company>
+                    <career_level>PROFESSIONAL_EXPERIENCED</career_level>
+                    <url>http://www.postfinance.ch</url>
+                    <begin_date>2007-09</begin_date>
+                    <description>Applikationsverantwortlicher für ein internes WebFramework, Software Entwickler</description>
+                    <tag>POSTFINANCE</tag>
+                    <company_size>1001-5000</company_size>
+                    <end_date>2008-12</end_date>
+                    <title>Software Engineer</title>
+                    <name>PostFinance</name>
+                    <industry>FINANCIAL_SERVICES</industry>
+                </non_primary_company>
+                <non_primary_company>
+                    <career_level>ENTRY_LEVEL</career_level>
+                    <url>http://www.geotask.ch</url>
+                    <begin_date>2004-10</begin_date>
+                    <description nil="true"></description>
+                    <tag>GEOTASKAG</tag>
+                    <company_size>11-50</company_size>
+                    <end_date>2007-08</end_date>
+                    <title>Software Engineer</title>
+                    <name>Geotask AG</name>
+                    <industry>INFORMATION_TECHNOLOGY_AND_SERVICES</industry>
+                </non_primary_company>
+            </non_primary_companies>
+            <primary_company>
+                <career_level>PROFESSIONAL_EXPERIENCED</career_level>
+                <url>http://www.canoo.com</url>
+                <begin_date>2009-01</begin_date>
+                <description nil="true"></description>
+                <tag>CANOOENGINEERINGAG</tag>
+                <company_size>11-50</company_size>
+                <end_date nil="true"></end_date>
+                <title>Senior Software Engineer</title>
+                <name>Canoo Engineering AG</name>
+                <industry>INFORMATION_TECHNOLOGY_AND_SERVICES</industry>
+            </primary_company>
+        </professional_experience>
         <id>6628146_33f97b</id>
+        <organisation_member>Java User Group Switzerland (JUGS)</organisation_member>
         <last_name>Bühler</last_name>
+        <display_name>Johannes Bühler</display_name>
+        <private_address>
+            <email>johannesbuehler@oderbruecke.de</email>
+            <zip_code>4054</zip_code>
+            <phone>41|61|3013714</phone>
+            <city>Basel</city>
+            <mobile_phone>49|79|8148119</mobile_phone>
+            <province nil="true"></province>
+            <fax nil="true"></fax>
+            <street>In den Ziegelhöfen 101</street>
+            <country>DE</country>
+        </private_address>
+        <educational_background>
+            <schools>
+                <school>
+                    <degree nil="true"></degree>
+                    <begin_date nil="true"></begin_date>
+                    <end_date nil="true"></end_date>
+                    <subject nil="true"></subject>
+                    <notes nil="true"></notes>
+                    <name>Ernst-Moritz-Arndt Universität Greifswald,</name>
+                </school>
+                <school>
+                    <degree nil="true"></degree>
+                    <begin_date nil="true"></begin_date>
+                    <end_date nil="true"></end_date>
+                    <subject nil="true"></subject>
+                    <notes nil="true"></notes>
+                    <name>Universität Utrecht</name>
+                </school>
+            </schools>
+            <qualifications>
+                <qualification>Sun Certified Java Programmer (Standard Edition 5) SCJP 1.5</qualification>
+                <qualification>Sun Certified Java Developer SCJD</qualification>
+                <qualification>Java Design Patterns Course Certificate</qualification>
+            </qualifications>
+        </educational_background>
     </user>
 </users>

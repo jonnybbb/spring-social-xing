@@ -30,7 +30,7 @@ import static org.springframework.test.web.client.RequestMatchers.requestTo;
 import static org.springframework.test.web.client.ResponseCreators.withResponse;
 
 /**
- * @author Craig Walls
+ * @author Johannes Bühler
  */
 public class ProfileTemplateTest extends AbstractXingApiTest {
 
