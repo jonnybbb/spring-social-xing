@@ -23,7 +23,7 @@ import org.springframework.social.oauth1.OAuth1Template;
 
 /**
  * Xing ServiceProvider implementation.
- * @author Johannes Bühler
+ * @author Johannes Buehler
  */
 public class XingServiceProvider extends AbstractOAuth1ServiceProvider<Xing> {
 

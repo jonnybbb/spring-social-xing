@@ -25,7 +25,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 /**
  * Xing ApiAdapter implementation.
- * @author Johannes Bühler
+ * @author Johannes Buehler
  */
 public class XingAdapter implements ApiAdapter<Xing> {
 

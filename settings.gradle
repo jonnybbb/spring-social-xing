@@ -16,5 +16,4 @@
 
 rootProject.name = 'spring-social-xing'
 
-//include 'docs'
 include 'spring-social-xing'

@@ -15,19 +15,20 @@
  */
 package org.springframework.social.xing.api.impl;
 
-import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.social.xing.api.XingProfile;
-
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.test.web.client.RequestMatchers.method;
-import static org.springframework.test.web.client.RequestMatchers.requestTo;
-import static org.springframework.test.web.client.ResponseCreators.withResponse;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
+
+import org.junit.Test;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
+import org.springframework.social.xing.api.XingProfile;
 
 /**
  * @author Johannes Bühler
@@ -37,7 +38,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 	@Test
 	public void getUserProfile() {
 		mockServer.expect(requestTo(ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
-				.andRespond(withResponse(new ClassPathResource("testdata/profile.json", getClass()), responseHeaders));
+				.andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
 		XingProfile userProfile = xing.profileOperations().getUserProfile();
 		assertEquals("6628146_33f97b", userProfile.getId());
 		assertEquals("Johannes", userProfile.getFirstName());
@@ -49,7 +50,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 	@Test
 	public void getProfileId() {
 		mockServer.expect(requestTo(ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
-				.andRespond(withResponse(new ClassPathResource("testdata/profile.json", getClass()), responseHeaders));
+				.andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
 		assertEquals("6628146_33f97b", xing.profileOperations().getProfileId());
 	}
 }
