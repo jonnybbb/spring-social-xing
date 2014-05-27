@@ -15,7 +15,7 @@
  */
 package org.springframework.social.xing.api.impl;
 
-import org.codehaus.jackson.map.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.social.xing.api.ProfileOperations;
 import org.springframework.social.xing.api.XingProfile;
 import org.springframework.social.xing.api.XingProfiles;

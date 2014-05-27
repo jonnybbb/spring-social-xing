@@ -15,9 +15,10 @@
  */
 package org.springframework.social.xing.api.impl.json;
 
-import org.codehaus.jackson.annotate.JsonCreator;
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.social.xing.api.BirthDate;
 import org.springframework.social.xing.api.BusinessAddress;
 import org.springframework.social.xing.api.PhotoUrls;

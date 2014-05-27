@@ -15,20 +15,23 @@
  */
 package org.springframework.social.xing.api.impl;
 
-import org.codehaus.jackson.JsonParser.Feature;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.map.SerializationConfig;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.oauth1.AbstractOAuth1ApiBinding;
 import org.springframework.social.support.HttpRequestDecorator;
-import org.springframework.social.xing.api.*;
+import org.springframework.social.xing.api.ProfileOperations;
+import org.springframework.social.xing.api.Xing;
 import org.springframework.social.xing.api.impl.json.XingModule;
 import org.springframework.util.ClassUtils;
 import org.springframework.web.client.RestOperations;
@@ -45,6 +48,7 @@ import java.util.List;
  * required to sign requests with and OAuth 1 Authorization header.
  * </p>
  * @author Craig Walls
+ * @author Johannes Bühler
  */
 public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	
@@ -57,7 +61,7 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	 */
 	public XingTemplate(String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
 		super(consumerKey, consumerSecret, accessToken, accessTokenSecret);
-		registerLinkedInJsonModule();
+		registerXingInJsonModule();
 		registerJsonFormatInterceptor();
 		initSubApis();
 	}
@@ -75,16 +79,18 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	
 	// private helpers
 	
-	private void registerLinkedInJsonModule() {
+	private void registerXingInJsonModule() {
 		List<HttpMessageConverter<?>> converters = getRestTemplate().getMessageConverters();
 		for (HttpMessageConverter<?> converter : converters) {
-			if(converter instanceof MappingJacksonHttpMessageConverter) {
-				MappingJacksonHttpMessageConverter jsonConverter = (MappingJacksonHttpMessageConverter) converter;
-				objectMapper = new ObjectMapper();				
+			if(converter instanceof MappingJackson2HttpMessageConverter) {
+                MappingJackson2HttpMessageConverter jsonConverter = (MappingJackson2HttpMessageConverter) converter;
+				objectMapper = new ObjectMapper();
 				objectMapper.registerModule(new XingModule());
-				objectMapper.configure(SerializationConfig.Feature.WRITE_ENUMS_USING_TO_STRING, true);
-				objectMapper.configure(Feature.ALLOW_NUMERIC_LEADING_ZEROS, true);
-				objectMapper.setSerializationConfig(objectMapper.getSerializationConfig().withSerializationInclusion(JsonSerialize.Inclusion.NON_NULL));
+				objectMapper.configure(SerializationFeature.WRITE_ENUMS_USING_TO_STRING, true);
+				objectMapper.configure(JsonParser.Feature.ALLOW_NUMERIC_LEADING_ZEROS, true);
+                objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
+
+                objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 				jsonConverter.setObjectMapper(objectMapper);
 			}
 		}

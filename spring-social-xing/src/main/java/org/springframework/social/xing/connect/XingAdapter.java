@@ -49,10 +49,12 @@ public class XingAdapter implements ApiAdapter<Xing> {
 
 	public UserProfile fetchUserProfile(Xing xing) {
 		XingProfile profile = xing.profileOperations().getUserProfile();
-		return new UserProfileBuilder().setName(profile.getFirstName() + " " + profile.getLastName()).build();
+		return new UserProfileBuilder()
+                .setName(profile.getFirstName() + " " + profile.getLastName())
+                .setEmail(profile.getActiveEmail()).build();
 	}
 	
-	public void updateStatus(Xing linkedin, String message) {
+	public void updateStatus(Xing xing, String message) {
 		// not supported yet
 	}
 	
