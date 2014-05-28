@@ -1,9 +1,11 @@
 buildscript {
     repositories {
         maven { url 'http://repo.springsource.org/plugins-release' }
+        maven { url 'http://jcenter.bintray.com' }
     }
     dependencies {
         classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.2.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.3'
     }
 }
 
