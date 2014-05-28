@@ -11,7 +11,7 @@ configure(allprojects) {
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
-    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
 
     group = 'org.springframework.social'
 
@@ -48,6 +48,8 @@ configure(allprojects) {
 
 configure(subprojects) { subproject ->
     apply from: "${rootProject.projectDir}/publish-maven.gradle"
+    apply plugin: 'maven-publish'
+    apply plugin: 'bintray'
 
     jar {
         manifest.attributes['Implementation-Title'] = subproject.name
@@ -82,7 +84,38 @@ configure(subprojects) { subproject ->
         archives sourcesJar
         archives javadocJar
     }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+
+                artifact sourcesJar {
+                    classifier "sources"
+                }
+
+                artifact javadocJar {
+                    classifier "javadoc"
+                }
+            }
+        }
+    }
+
+    bintray {
+        user = bintrayUser //this usually comes form gradle.properties file in ~/.gradle
+        key = bintrayKey //this usually comes form gradle.properties file in ~/.gradle
+        publications = ['mavenJava'] // see publications closure
+        pkg { //package will be created if does not exist
+            repo = 'repo'
+//            userOrg = 'myorg' // an optional organization name when the repo belongs to one of the user's orgs
+            name = 'spring-social-xing'
+            desc = 'Package created from spring-social-xing'
+            licenses = ['Apache-2.0']
+            labels = ['spring', 'xing','rest','api','social']
+        }
+    }
 }
+
 
 project('spring-social-xing') {
     description = 'Xing API'
@@ -246,6 +279,12 @@ task updateRootDocs << {
         into "${rootProject.projectDir}"
         include 'license.txt'
         rename { filename -> 'LICENSE' }
+    }
+}
+
+model {
+    tasks.generatePomFileForMavenCustomPublication {
+        destination = file("$buildDir/pom.xml")
     }
 }
 
