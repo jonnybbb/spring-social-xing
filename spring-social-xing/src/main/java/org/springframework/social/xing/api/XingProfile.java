@@ -20,7 +20,7 @@ import java.io.Serializable;
 /**
  * Model class containing a user's Xing profile information.
  *
- * @author Johannes Bühler
+ * @author Johannes Buehler
  */
 public class XingProfile implements Serializable {
 

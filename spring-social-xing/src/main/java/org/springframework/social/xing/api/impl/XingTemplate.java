@@ -48,7 +48,7 @@ import java.util.List;
  * required to sign requests with and OAuth 1 Authorization header.
  * </p>
  * @author Craig Walls
- * @author Johannes Bühler
+ * @author Johannes Buehler
  */
 public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	

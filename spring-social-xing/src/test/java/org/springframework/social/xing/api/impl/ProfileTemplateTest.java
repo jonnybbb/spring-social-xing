@@ -15,6 +15,11 @@
  */
 package org.springframework.social.xing.api.impl;
 
+import org.junit.Test;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
+import org.springframework.social.xing.api.XingProfile;
+
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
@@ -25,13 +30,8 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
-import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.MediaType;
-import org.springframework.social.xing.api.XingProfile;
-
 /**
- * @author Johannes Bühler
+ * @author Johannes Buehler
  */
 public class ProfileTemplateTest extends AbstractXingApiTest {
 
