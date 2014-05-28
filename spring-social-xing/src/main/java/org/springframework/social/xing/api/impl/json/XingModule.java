@@ -15,8 +15,9 @@
  */
 package org.springframework.social.xing.api.impl.json;
 
-import org.codehaus.jackson.Version;
-import org.codehaus.jackson.map.module.SimpleModule;
+
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.social.xing.api.*;
 
 /**

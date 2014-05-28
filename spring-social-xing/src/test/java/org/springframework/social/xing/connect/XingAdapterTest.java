@@ -41,7 +41,7 @@ public class XingAdapterTest {
 		assertEquals("Johannes Bühler", profile.getName());
 		assertEquals("Johannes", profile.getFirstName());
 		assertEquals("Bühler", profile.getLastName());
-		assertNull(profile.getEmail());
+		assertEquals("johannesbuehler@oderbruecke.de",profile.getEmail());
 		assertNull(profile.getUsername());
 	}
 
