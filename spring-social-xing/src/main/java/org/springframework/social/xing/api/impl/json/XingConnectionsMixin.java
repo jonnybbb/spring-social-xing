@@ -16,18 +16,15 @@
 package org.springframework.social.xing.api.impl.json;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.social.xing.api.XingProfile;
+import org.springframework.social.xing.api.Contacts;
 
-import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-abstract class XingProfilesMixin {
+@JsonIgnoreProperties(ignoreUnknown = false)
+abstract class XingConnectionsMixin {
 
-    @JsonCreator
-    XingProfilesMixin(
-            @JsonProperty("users") List<XingProfile> users) {
-    }
+    @JsonProperty("contacts")
+    private Contacts contacts;
+
 }

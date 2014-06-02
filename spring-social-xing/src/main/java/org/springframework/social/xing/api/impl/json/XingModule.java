@@ -33,9 +33,12 @@ public class XingModule extends SimpleModule {
     public void setupModule(SetupContext context) {
         context.setMixInAnnotations(XingProfile.class, XingProfileMixin.class);
         context.setMixInAnnotations(XingProfiles.class, XingProfilesMixin.class);
-        context.setMixInAnnotations(BirthDate.class,BirthDateMixin.class);
-        context.setMixInAnnotations(PhotoUrls.class,PhotoUrlsMixin.class);
-        context.setMixInAnnotations(BusinessAddress.class,BusinessAddressMixin.class);
+        context.setMixInAnnotations(BirthDate.class, BirthDateMixin.class);
+        context.setMixInAnnotations(PhotoUrls.class, PhotoUrlsMixin.class);
+        context.setMixInAnnotations(BusinessAddress.class, BusinessAddressMixin.class);
+        context.setMixInAnnotations(XingConnections.class, XingConnectionsMixin.class);
+        context.setMixInAnnotations(Contacts.class, ContactsMixin.class);
+        context.setMixInAnnotations(User.class, UserMixin.class);
     }
 
 }
