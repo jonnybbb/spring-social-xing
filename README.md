@@ -35,4 +35,4 @@ To build the JavaDoc, do the following from within the root directory:
  ./gradlew :docs:api
 
 The result will be available in 'docs/build/api'.
-===============================================================================
+
