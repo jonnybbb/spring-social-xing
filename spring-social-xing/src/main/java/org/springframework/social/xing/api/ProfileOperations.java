@@ -15,6 +15,8 @@
  */
 package org.springframework.social.xing.api;
 
+import java.util.List;
+
 /**
  * Operations on Profile API
  * 
@@ -42,6 +44,8 @@ public interface ProfileOperations {
 	 * @return the user's profile data.
 	 */
 	XingProfile getProfileById(String id);
+
+    XingProfiles find_by_emails(List<String> emails);
 
 
 }

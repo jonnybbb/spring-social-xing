@@ -7,7 +7,7 @@ import java.util.List;
 */
 public class Contacts {
     private Integer total;
-    private List<User> users;
+    private List<XingProfile> users;
 
     public Integer getTotal() {
         return total;
@@ -17,11 +17,11 @@ public class Contacts {
         this.total = total;
     }
 
-    public List<User> getUsers() {
+    public List<XingProfile> getUsers() {
         return users;
     }
 
-    public void setUsers(List<User> users) {
+    public void setUsers(List<XingProfile> users) {
         this.users = users;
     }
 }

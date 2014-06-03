@@ -21,35 +21,59 @@ import org.springframework.social.xing.api.XingProfile;
 import org.springframework.social.xing.api.XingProfiles;
 import org.springframework.web.client.RestOperations;
 
+import java.util.List;
+
 import static org.springframework.social.xing.api.impl.XingTemplate.BASE_URL;
 
 /**
  * Class that implements operations for Profile API
- * 
+ *
  * @author Robert Drysdale
  */
 class ProfileTemplate extends AbstractTemplate implements ProfileOperations {
 
-	private RestOperations restOperations;
+    private RestOperations restOperations;
 
     static final String USERS_URL = BASE_URL + "/users/{id}.json";
+    static final String FIND_BY_EMAILS = BASE_URL + "/find_by_emails";
 
-	private ObjectMapper objectMapper;
+    static String FULL_PROFILE_FIELDS = "birth_date," +
+            "photo_urls," +
+            "interests," +
+            "wants," +
+            "organisation_member," +
+            "gender," +
+            "page_name," +
+            "business_address," +
+            "haves," +
+            "id," +
+            "first_name," +
+            "last_name," +
+            "permalink," +
+            "active_email," +
+            "display_name";
+    private ObjectMapper objectMapper;
+
     public ProfileTemplate(RestOperations restOperations, ObjectMapper objectMapper) {
-		this.restOperations = restOperations;
-		this.objectMapper = objectMapper;
-	}
+        this.restOperations = restOperations;
+        this.objectMapper = objectMapper;
+    }
 
-	public String getProfileId() {
-		return getUserProfile().getId();
-	}
+    public String getProfileId() {
+        return getUserProfile().getId();
+    }
 
     public XingProfile getUserProfile() {
-		return getProfileById("me");
-	}
+        return getProfileById("me");
+    }
 
-	public XingProfile getProfileById(String id) {
-		return restOperations.getForObject(USERS_URL, XingProfiles.class, id).getProfiles().get(0);
-	}
+    public XingProfile getProfileById(String id) {
+        return restOperations.getForObject(USERS_URL, XingProfiles.class, id).getProfiles().get(0);
+    }
+
+    @Override
+    public XingProfiles find_by_emails(List<String> emails) {
+        return restOperations.getForObject(FIND_BY_EMAILS, XingProfiles.class, id).getProfiles().get(0);
+    }
 
 }

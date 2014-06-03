@@ -1,0 +1,21 @@
+{
+    "contacts": {
+        "total": 47,
+        "users": [{
+            "display_name": "Christina Ahnefeld",
+            "id": "64060_b12067"
+        }, {
+            "display_name": "Hasso Sieber",
+            "id": "3167095_eb35c2"
+        }, {
+            "display_name": "Elmar Hinsenkamp",
+            "id": "3217478_24d6c7"
+        }, {
+            "display_name": "Prof. Tammo Freese",
+            "id": "3228492_025d41"
+        }, {
+            "display_name": "Jonas Wunderlich",
+            "id": "3312533_101654"
+        }]
+    }
+}

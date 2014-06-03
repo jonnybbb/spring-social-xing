@@ -15,6 +15,7 @@
  */
 package org.springframework.social.xing.api.impl;
 
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
@@ -53,4 +54,11 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 				.andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
 		assertEquals("6628146_33f97b", xing.profileOperations().getProfileId());
 	}
+
+    @Test
+    public void fullProfilFieldsAsString() throws Exception {
+        System.out.println(ProfileTemplate.FULL_PROFILE_FIELDS);
+        assertThat(ProfileTemplate.FULL_PROFILE_FIELDS.contains("first_name"), CoreMatchers.is(true));
+
+    }
 }

@@ -18,7 +18,7 @@ package org.springframework.social.xing.api.impl;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
-import org.springframework.social.xing.api.User;
+import org.springframework.social.xing.api.XingProfile;
 
 import java.util.List;
 
@@ -38,7 +38,16 @@ public class ConnectionTemplateTest extends AbstractXingApiTest {
     public void getConections() {
         mockServer.expect(requestTo(ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
                 .andRespond(withSuccess(new ClassPathResource("testdata/connections.json", getClass()), MediaType.APPLICATION_JSON));
-        List<User> userProfile = xing.connectionOperations().getConnections();
-        assertThat(userProfile, hasSize(2));
+        List<XingProfile> userProfile = xing.connectionOperations().getConnections();
+        assertThat(userProfile, hasSize(10));
+    }
+
+
+    @Test
+    public void getConectionsWithProfil() {
+        mockServer.expect(requestTo(ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
+                .andRespond(withSuccess(new ClassPathResource("testdata/connections_with_fields.json", getClass()), MediaType.APPLICATION_JSON));
+        List<XingProfile> userProfile = xing.connectionOperations().getConnections();
+        assertThat(userProfile, hasSize(10));
     }
 }
