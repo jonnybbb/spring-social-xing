@@ -1,4 +1,6 @@
-================================ Spring Social ===============================
+[![Build Status](https://travis-ci.org/jonnybbb/spring-social-xing.svg?branch=master)](https://travis-ci.org/jonnybbb/spring-social-xing)
+
+# Spring Social
 To check out the project and build from source, do the following:
 
  git clone --recursive git://github.com/SpringSource/spring-social.git
