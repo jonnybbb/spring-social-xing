@@ -16,9 +16,19 @@
 package org.springframework.social.xing.api.impl.json;
 
 
+import org.springframework.social.xing.api.Award;
+import org.springframework.social.xing.api.BirthDate;
+import org.springframework.social.xing.api.BusinessAddress;
+import org.springframework.social.xing.api.Company;
+import org.springframework.social.xing.api.EducationalBackground;
+import org.springframework.social.xing.api.PhotoUrls;
+import org.springframework.social.xing.api.ProfessionalExperience;
+import org.springframework.social.xing.api.XingDate;
+import org.springframework.social.xing.api.XingProfile;
+import org.springframework.social.xing.api.XingProfiles;
+
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.springframework.social.xing.api.*;
 
 /**
  * Jackson module for registering mixin annotations against Xing model classes.
@@ -36,6 +46,11 @@ public class XingModule extends SimpleModule {
         context.setMixInAnnotations(BirthDate.class,BirthDateMixin.class);
         context.setMixInAnnotations(PhotoUrls.class,PhotoUrlsMixin.class);
         context.setMixInAnnotations(BusinessAddress.class,BusinessAddressMixin.class);
+        context.setMixInAnnotations(Company.class, CompanyMixin.class);
+        context.setMixInAnnotations(ProfessionalExperience.class, ProfessionalExperienceMixin.class);
+        context.setMixInAnnotations(EducationalBackground.class, EducationalBackgroundMixin.class);
+        context.setMixInAnnotations(XingDate.class, XingDateMixin.class);
+        context.setMixInAnnotations(Award.class, AwardMixin.class);
     }
 
 }

@@ -44,7 +44,34 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 		assertEquals("Johannes", userProfile.getFirstName());
 		assertEquals("Bühler", userProfile.getLastName());
         assertThat(userProfile.getPermalink(), is(not(nullValue())));
+        assertThat(userProfile.getProfessionalExperience(), is(not(nullValue())));
+        assertEquals(2, userProfile.getProfessionalExperience().getNonPrimaryCompanies().size());
+        assertEquals("CANOOENGINEERINGAG", userProfile.getProfessionalExperience().getPrimaryCompany().getTag());
+        assertEquals(Integer.valueOf(1), userProfile.getProfessionalExperience().getPrimaryCompany().getBeginDate().getMonth());
+        assertEquals("Senior Software Engineer", userProfile.getProfessionalExperience().getPrimaryCompany().getTitle());
+        assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
+        assertEquals(2, userProfile.getEducationalBackground().getSchools().size());
+        assertEquals(3, userProfile.getEducationalBackground().getQualifications().size());
+        assertEquals("Java Design Patterns Course Certificate", userProfile.getEducationalBackground().getQualifications().get(2));
+        
 	}
+	
+	
+	@Test
+	public void getFullUserProfile() {
+		mockServer.expect(requestTo(ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
+				.andRespond(withSuccess(new ClassPathResource("testdata/full_profile.json", getClass()), MediaType.APPLICATION_JSON));
+		XingProfile userProfile = xing.profileOperations().getUserProfile();
+		assertEquals("ACM, GI", userProfile.getOrganisationMember());
+		assertEquals("m", userProfile.getGender());
+		assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());
+        assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
+        assertEquals("1_abcdef", userProfile.getProfessionalExperience().getPrimaryCompany().getId());
+        assertEquals("42_abcdef", userProfile.getEducationalBackground().getPrimarySchool().getId());
+        assertEquals(2, userProfile.getEducationalBackground().getQualifications().size());
+        assertEquals("PADI AOWD", userProfile.getEducationalBackground().getQualifications().get(1));
+        
+	}	
 	
 
 	@Test

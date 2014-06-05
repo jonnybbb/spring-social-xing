@@ -41,6 +41,8 @@ public class XingProfile implements Serializable {
     private String permalink;
     private String activeEmail;
     private String displayName;
+    private ProfessionalExperience professionalExperience;
+    private EducationalBackground educationalBackground;
 
     public XingProfile() {
     }
@@ -157,4 +159,12 @@ public class XingProfile implements Serializable {
     public String getDisplayName() {
         return displayName;
     }
+    
+    public ProfessionalExperience getProfessionalExperience() {
+		return professionalExperience;
+	}
+    
+    public EducationalBackground getEducationalBackground() {
+		return educationalBackground;
+	}
 }
