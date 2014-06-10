@@ -15,44 +15,47 @@
  */
 package org.springframework.social.xing.api.impl.json;
 
+import java.util.List;
+
+import org.springframework.social.xing.api.BirthDate;
+import org.springframework.social.xing.api.BusinessAddress;
+import org.springframework.social.xing.api.PhotoUrls;
+import org.springframework.social.xing.api.ProfessionalExperience;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.social.xing.api.BirthDate;
-import org.springframework.social.xing.api.BusinessAddress;
-import org.springframework.social.xing.api.PhotoUrls;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class XingProfileMixin {
 
-    @JsonCreator
-    XingProfileMixin(
-            @JsonProperty("id") String id,
-            @JsonProperty("first_name") String firstName,
-            @JsonProperty("last_name") String lastName,
-            @JsonProperty("permalink") String permalink,
-            @JsonProperty("active_email") String activeEmail,
-            @JsonProperty("display_name") String displayName
-    ) {
-    }
+	@JsonCreator
+	XingProfileMixin(@JsonProperty("id") String id,
+			@JsonProperty("first_name") String firstName,
+			@JsonProperty("last_name") String lastName,
+			@JsonProperty("permalink") String permalink,
+			@JsonProperty("active_email") String activeEmail,
+			@JsonProperty("display_name") String displayName) {
+	}
 
-    @JsonProperty("birth_date")
-    private BirthDate birthDate;
-    @JsonProperty("photo_urls")
-    private PhotoUrls photoUrls;
-    @JsonProperty("interests")
-    private String interests;
-    @JsonProperty("wants")
-    private String wants;
-    @JsonProperty("organisation_member")
-    private String organisationMember;
-    @JsonProperty("gender")
-    private String gender;
-    @JsonProperty("page_name")
-    private String pageName;
-    @JsonProperty("business_address")
-    private BusinessAddress businessAddress;
-    @JsonProperty("haves")
-    private String haves;
+	@JsonProperty("birth_date")
+	private BirthDate birthDate;
+	@JsonProperty("photo_urls")
+	private PhotoUrls photoUrls;
+	@JsonProperty("interests")
+	private String interests;
+	@JsonProperty("wants")
+	private String wants;
+	@JsonProperty("organisation_member")
+	private String organisationMember;
+	@JsonProperty("gender")
+	private String gender;
+	@JsonProperty("page_name")
+	private String pageName;
+	@JsonProperty("business_address")
+	private BusinessAddress businessAddress;
+	@JsonProperty("haves")
+	private String haves;
+	@JsonProperty("professional_experience")
+	private ProfessionalExperience professionalExperience;
 }
