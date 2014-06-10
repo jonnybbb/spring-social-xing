@@ -30,6 +30,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.social.oauth1.AbstractOAuth1ApiBinding;
 import org.springframework.social.support.HttpRequestDecorator;
+import org.springframework.social.xing.api.ConnectionOperations;
 import org.springframework.social.xing.api.ProfileOperations;
 import org.springframework.social.xing.api.Xing;
 import org.springframework.social.xing.api.impl.json.XingModule;
@@ -51,7 +52,16 @@ import java.util.List;
  * @author Johannes Buehler
  */
 public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
-	
+
+    private ProfileOperations profileOperations;
+    private ConnectionOperations connectionOperations;
+
+    private ObjectMapper objectMapper;
+
+    private static boolean interceptorsSupported = ClassUtils.isPresent("org.springframework.http.client.ClientHttpRequestInterceptor", XingTemplate.class.getClassLoader());
+
+    static final String BASE_URL = "https://api.xing.com/v1";
+
 	/**
 	 * Creates a new XingTemplate given the minimal amount of information needed to sign requests with OAuth 1 credentials.
 	 * @param consumerKey the application's API key
@@ -70,10 +80,13 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	public ProfileOperations profileOperations() {
 		return profileOperations;
 	}
-	
 
-	
-	public RestOperations restOperations() {
+    public ConnectionOperations connectionOperations() {
+        return connectionOperations;
+    }
+
+
+    public RestOperations restOperations() {
 		return getRestTemplate();
 	}
 	
@@ -118,25 +131,18 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	
 	private void initSubApis() {
 		profileOperations = new ProfileTemplate(getRestTemplate(), objectMapper);
+        connectionOperations = new ConnectionTemplate(getRestTemplate());
+    }
 
-	}
 
-	private ProfileOperations profileOperations;
-
-	
-
-	private ObjectMapper objectMapper;
-	
-	private static boolean interceptorsSupported = ClassUtils.isPresent("org.springframework.http.client.ClientHttpRequestInterceptor", XingTemplate.class.getClassLoader());
-	
-	static final String BASE_URL = "https://api.xing.com/v1";
 	
 	private static final class JsonFormatInterceptor implements ClientHttpRequestInterceptor {
 		public ClientHttpResponse intercept(HttpRequest request, byte[] body,
 				ClientHttpRequestExecution execution) throws IOException {
 			HttpRequest contentTypeResourceRequest = new HttpRequestDecorator(request);
 			contentTypeResourceRequest.getHeaders().add("x-li-format", "json");
-			return execution.execute(contentTypeResourceRequest, body);
+			contentTypeResourceRequest.getHeaders().add("Accept-Encoding", "identity");
+            return execution.execute(contentTypeResourceRequest, body);
 		}
 		
 	}

@@ -23,8 +23,7 @@ import org.springframework.web.client.RestOperations;
  * Many of the methods contained in this interface require OAuth authentication with Xing.
  * When a method's description speaks of the "current user", it is referring to the user for whom the access token has been issued.
  * 
- * @author Craig Walls
- * @author Robert Drysdale
+ * @author Johannes Buehler
  */
 public interface Xing extends ApiBinding {
 
@@ -32,10 +31,13 @@ public interface Xing extends ApiBinding {
 	 * API for retrieving and performing operations on profiles
 	 */
 	ProfileOperations profileOperations();
-	
 
+    /**
+     * API for retrieving and performing operations on profiles
+     */
+    ConnectionOperations connectionOperations();
 
-	/**
+    /**
 	 * Returns the underlying {@link RestOperations} object allowing for consumption of Xing endpoints that may not be otherwise covered by the API binding.
 	 * The RestOperations object returned is configured to include an OAuth "Authorization" header on all requests.
 	 */

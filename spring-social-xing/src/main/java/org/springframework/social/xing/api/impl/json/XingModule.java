@@ -42,6 +42,9 @@ public class XingModule extends SimpleModule {
         context.setMixInAnnotations(EducationalBackground.class, EducationalBackgroundMixin.class);
         context.setMixInAnnotations(XingDate.class, XingDateMixin.class);
         context.setMixInAnnotations(Award.class, AwardMixin.class);
+        context.setMixInAnnotations(XingConnections.class, XingConnectionsMixin.class);
+        context.setMixInAnnotations(Contacts.class, ContactsMixin.class);
+        context.setMixInAnnotations(User.class, UserMixin.class);
     }
 
 }
