@@ -1,5 +1,6 @@
 package org.springframework.social.xing.api.impl.json;
 
+import org.springframework.social.xing.api.CareerLevel;
 import org.springframework.social.xing.api.XingDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,7 +24,7 @@ abstract class CompanyMixin {
 	@JsonProperty("url")
 	private String url;
 	@JsonProperty("career_level")
-	private String careerLevel;
+	private CareerLevel careerLevel;
 	@JsonProperty("title")
 	private String title;
 	@JsonProperty("begin_date")

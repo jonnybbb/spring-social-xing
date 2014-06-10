@@ -16,16 +16,7 @@
 package org.springframework.social.xing.api.impl.json;
 
 
-import org.springframework.social.xing.api.Award;
-import org.springframework.social.xing.api.BirthDate;
-import org.springframework.social.xing.api.BusinessAddress;
-import org.springframework.social.xing.api.Company;
-import org.springframework.social.xing.api.EducationalBackground;
-import org.springframework.social.xing.api.PhotoUrls;
-import org.springframework.social.xing.api.ProfessionalExperience;
-import org.springframework.social.xing.api.XingDate;
-import org.springframework.social.xing.api.XingProfile;
-import org.springframework.social.xing.api.XingProfiles;
+import org.springframework.social.xing.api.*;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.module.SimpleModule;

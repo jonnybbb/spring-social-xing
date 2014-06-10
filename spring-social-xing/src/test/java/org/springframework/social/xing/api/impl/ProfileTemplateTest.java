@@ -18,6 +18,9 @@ package org.springframework.social.xing.api.impl;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
+import org.springframework.social.xing.api.CareerLevel;
+import org.springframework.social.xing.api.EmploymentStatus;
+import org.springframework.social.xing.api.FormOfEmployment;
 import org.springframework.social.xing.api.XingProfile;
 
 import static org.hamcrest.CoreMatchers.not;
@@ -49,6 +52,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
         assertEquals("CANOOENGINEERINGAG", userProfile.getProfessionalExperience().getPrimaryCompany().getTag());
         assertEquals(Integer.valueOf(1), userProfile.getProfessionalExperience().getPrimaryCompany().getBeginDate().getMonth());
         assertEquals("Senior Software Engineer", userProfile.getProfessionalExperience().getPrimaryCompany().getTitle());
+        assertEquals(CareerLevel.PROFESSIONAL_EXPERIENCED, userProfile.getProfessionalExperience().getPrimaryCompany().getCareerLevel());
         assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
         assertEquals(2, userProfile.getEducationalBackground().getSchools().size());
         assertEquals(3, userProfile.getEducationalBackground().getQualifications().size());
@@ -67,6 +71,8 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 		assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());
         assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
         assertEquals("1_abcdef", userProfile.getProfessionalExperience().getPrimaryCompany().getId());
+        assertEquals(EmploymentStatus.EMPLOYEE, userProfile.getEmploymentStatus());
+        assertEquals(FormOfEmployment.FULL_TIME_EMPLOYEE, userProfile.getProfessionalExperience().getPrimaryCompany().getFormOfEmployment());
         assertEquals("42_abcdef", userProfile.getEducationalBackground().getPrimarySchool().getId());
         assertEquals(2, userProfile.getEducationalBackground().getQualifications().size());
         assertEquals("PADI AOWD", userProfile.getEducationalBackground().getQualifications().get(1));

@@ -21,6 +21,7 @@ import java.io.Serializable;
  * Model class containing a user's Xing profile information.
  *
  * @author Johannes Buehler
+ * @author Dominik Bartholdi <domi@fortysix.ch>
  */
 public class XingProfile implements Serializable {
 
@@ -41,8 +42,10 @@ public class XingProfile implements Serializable {
     private String permalink;
     private String activeEmail;
     private String displayName;
+    private EmploymentStatus employmentStatus;
     private ProfessionalExperience professionalExperience;
     private EducationalBackground educationalBackground;
+
 
     public XingProfile() {
     }
@@ -159,12 +162,16 @@ public class XingProfile implements Serializable {
     public String getDisplayName() {
         return displayName;
     }
-    
+
     public ProfessionalExperience getProfessionalExperience() {
-		return professionalExperience;
-	}
-    
+        return professionalExperience;
+    }
+
     public EducationalBackground getEducationalBackground() {
-		return educationalBackground;
-	}
+        return educationalBackground;
+    }
+
+    public EmploymentStatus getEmploymentStatus() {
+        return employmentStatus;
+    }
 }

@@ -12,10 +12,11 @@ public class Company implements Serializable {
 	private String tag;
 	private String name;
 	private String url;
-	private String careerLevel;
+	private CareerLevel careerLevel;
 	private String title;
 	private XingDate beginDate;
 	private String description;
+    private FormOfEmployment formOfEmployment;
 
 	public String getId() {
 		return id;
@@ -45,7 +46,7 @@ public class Company implements Serializable {
 		return url;
 	}
 
-	public String getCareerLevel() {
+	public CareerLevel getCareerLevel() {
 		return careerLevel;
 	}
 
@@ -61,4 +62,7 @@ public class Company implements Serializable {
 		return description;
 	}
 
+    public FormOfEmployment getFormOfEmployment() {
+        return formOfEmployment;
+    }
 }
