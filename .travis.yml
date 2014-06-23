@@ -1,8 +1,9 @@
 language: java
+
 env:
   global:
-  - secure: h1VoF715l5ekQ5TJTadG1P7rQtvkDbxLS1IDgCPrSqs0JZ25SbtdXfrwD/P3m9+Fsb0OoQBWKKFa4BGRiyPUpYvB7ma2X4o6tkWuIOi7lXX+R8cV9szcq7grDrdZdUFj32lmn7RBKIomoOLx/yeol5JKCdBRg2Lm1XOykAIb1iQ=
-  - secure: QC5vMWqKrqXYs10meOzuOFs6P2u0LNGRBt2Ca6lal9SICWXF4XkmPwWhzRGUDO6QUP4D8qE40ZU/0FFNWvwdLIB+7Se+k27Lt80FOtgB66RmDAiptzan8Mwwq7w5lqdxE1oRfmB0pUVv06M/RDI3NYqHSBouPIiT7AB5BfmgSIg=
+  - secure: wr9zKPOtOS6P0lKfGISYwgMdEbsBjC0adxYZZ6xi8Z//B4PXnvaYDg2Vxk2PQ0wcMBV9Cl4Lj6Be34lIbDfxTkkMQiZY/3t6BxzjyTay1CquqoLenP6j/2PmltMIJGMVb/02eSUdRgeGbeiOHNEnylHnQ+9cWdSE6jq4nGT2Hbk=
+  - secure: Q3Rja+G/aV8h7Vvnz+AW2bsR6rn6vZbowmw57Psk95WWkFEigSqWFkG3PE4VYo1/Ib2vuktPTuPadonDgZ55I2XYZ2C1WCoJCO+1mErQiEHKdaWglccbmE3k+JJQkfwGuhkAx/ucki+j6o0giykH+EAtilKfQWQWwoFhYunzXqo=
 
 after_success:
-	- gradle bintrayUpload
+- gradle bintrayUpload -PbintrayUser="${BINTRAY_USER}" -PbintrayKey="${BINTRAY_KEY}"
