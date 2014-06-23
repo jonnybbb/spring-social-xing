@@ -1,0 +1,2 @@
+http\://www.springframework.org/schema/social/spring-social-xing.xsd=org/springframework/social/xing/config/xml/spring-social-xing-1.0.xsd
+http\://www.springframework.org/schema/social/spring-social-xing-1.0.xsd=org/springframework/social/xing/config/xml/spring-social-xing-1.0.xsd
