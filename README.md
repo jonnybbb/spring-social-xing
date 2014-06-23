@@ -3,36 +3,36 @@
 # Spring Social
 To check out the project and build from source, do the following:
 
- git clone --recursive git://github.com/SpringSource/spring-social.git
- cd spring-social
- ./gradlew build
+    git clone --recursive git://github.com/SpringSource/spring-social.git
+    cd spring-social
+    ./gradlew build
 
 Note: the --recursive switch above is important, as spring-social uses
 git submodules, which must themselves be cloned and initialized. If --recursive
 is omitted, doing so becomes a multi-step process of: 
 
-git clone git://github.com/SpringSource/spring-social.git
-git submodule init
-git submodule update
+    git clone git://github.com/SpringSource/spring-social.git
+    git submodule init
+    git submodule update
 
 -------------------------------------------------------------------------------
 To generate Eclipse metadata (.classpath and .project files), do the following:
 
- ./gradlew eclipse
+    ./gradlew eclipse
 
 Once complete, you may then import the projects into Eclipse as usual:
 
- File -> Import -> Existing projects into workspace
+    File -> Import -> Existing projects into workspace
 
 -------------------------------------------------------------------------------
 To generate IDEA metadata (.iml and .ipr files), do the following:
 
- ./gradlew idea
+    ./gradlew idea
 
 -------------------------------------------------------------------------------
 To build the JavaDoc, do the following from within the root directory:
 
- ./gradlew :docs:api
+    ./gradlew :docs:api
 
-The result will be available in 'docs/build/api'.
+The result will be available in `docs/build/api`.
 
