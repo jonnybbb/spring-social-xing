@@ -1,19 +1,49 @@
 [![Build Status](https://travis-ci.org/jonnybbb/spring-social-xing.svg?branch=master)](https://travis-ci.org/jonnybbb/spring-social-xing)
 
-# Spring Social
+# Spring Social Xing
+
+## Download Artifacts
+
+
+### Dependencies
+
+#### Gradle
+
+    compile(group: 'org.springframework.social', name: 'spring-social-xing', version: '1.1.0.RELEASE')
+
+
+#### Maven
+
+```xml
+<dependency>
+    <groupId>org.springframework.social</groupId>
+    <artifactId>spring-social-xing</artifactId>
+    <version>${org.springframework.social-xing-version}</version>
+</dependency>
+
+```
+
+
+### Repositories
+
+```xml
+<repository>
+    <id>spring-social-xing</id>
+    <name>Spring Social Xing Repository</name>
+    <url>http://dl.bintray.com/jonnybbb/repo</url>
+</repository>   
+
+```
+
+## Build from source
+
+
 To check out the project and build from source, do the following:
 
-    git clone --recursive git://github.com/SpringSource/spring-social.git
-    cd spring-social
+    git clone git://github.com/jonnybbb/spring-social-xing.git
+    cd spring-social-xing
     ./gradlew build
 
-Note: the `--recursive` switch above is important, as spring-social uses
-git submodules, which must themselves be cloned and initialized. If `--recursive`
-is omitted, doing so becomes a multi-step process of: 
-
-    git clone git://github.com/SpringSource/spring-social.git
-    git submodule init
-    git submodule update
 
 -------------------------------------------------------------------------------
 To generate Eclipse metadata (`.classpath` and `.project files`), do the following:
