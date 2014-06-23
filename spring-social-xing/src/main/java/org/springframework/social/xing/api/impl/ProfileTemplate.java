@@ -68,12 +68,10 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations {
     }
 
     public XingProfile getProfileById(String id) {
-        return restOperations.getForObject(USERS_URL, XingProfiles.class, id).getProfiles().get(0);
+        List<XingProfile> profiles = restOperations.getForObject(USERS_URL, XingProfiles.class, id).getProfiles();
+        return profiles.get(0);
+
     }
 
-    @Override
-    public XingProfiles find_by_emails(List<String> emails) {
-        return restOperations.getForObject(FIND_BY_EMAILS, XingProfiles.class, id).getProfiles().get(0);
-    }
 
 }

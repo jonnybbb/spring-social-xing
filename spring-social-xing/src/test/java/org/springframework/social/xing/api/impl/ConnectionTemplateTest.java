@@ -22,7 +22,7 @@ import org.springframework.social.xing.api.XingProfile;
 
 import java.util.List;
 
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
@@ -38,8 +38,11 @@ public class ConnectionTemplateTest extends AbstractXingApiTest {
     public void getConections() {
         mockServer.expect(requestTo(ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
                 .andRespond(withSuccess(new ClassPathResource("testdata/connections.json", getClass()), MediaType.APPLICATION_JSON));
-        List<XingProfile> userProfile = xing.connectionOperations().getConnections();
-        assertThat(userProfile, hasSize(10));
+        List<XingProfile> profiles = xing.connectionOperations().getConnections();
+        assertThat(profiles, hasSize(10));
+        for (XingProfile profile : profiles) {
+            assertThat(profile.getId().length(), is(greaterThan(1)));
+        }
     }
 
 
@@ -47,7 +50,11 @@ public class ConnectionTemplateTest extends AbstractXingApiTest {
     public void getConectionsWithProfil() {
         mockServer.expect(requestTo(ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
                 .andRespond(withSuccess(new ClassPathResource("testdata/connections_with_fields.json", getClass()), MediaType.APPLICATION_JSON));
-        List<XingProfile> userProfile = xing.connectionOperations().getConnections();
-        assertThat(userProfile, hasSize(10));
+        List<XingProfile> profiles = xing.connectionOperations().getConnections();
+        assertThat(profiles, hasSize(5));
+        for (XingProfile profile : profiles) {
+            assertThat(profile.getId().length(), is(greaterThan(1)));
+            assertThat(profile.getDisplayName().length(), is(greaterThan(1)));
+        }
     }
 }
