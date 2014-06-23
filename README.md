@@ -7,8 +7,8 @@ To check out the project and build from source, do the following:
     cd spring-social
     ./gradlew build
 
-Note: the --recursive switch above is important, as spring-social uses
-git submodules, which must themselves be cloned and initialized. If --recursive
+Note: the `--recursive` switch above is important, as spring-social uses
+git submodules, which must themselves be cloned and initialized. If `--recursive`
 is omitted, doing so becomes a multi-step process of: 
 
     git clone git://github.com/SpringSource/spring-social.git
@@ -16,7 +16,7 @@ is omitted, doing so becomes a multi-step process of:
     git submodule update
 
 -------------------------------------------------------------------------------
-To generate Eclipse metadata (.classpath and .project files), do the following:
+To generate Eclipse metadata (`.classpath` and `.project files`), do the following:
 
     ./gradlew eclipse
 
@@ -25,7 +25,7 @@ Once complete, you may then import the projects into Eclipse as usual:
     File -> Import -> Existing projects into workspace
 
 -------------------------------------------------------------------------------
-To generate IDEA metadata (.iml and .ipr files), do the following:
+To generate IDEA metadata (`.iml` and `.ipr` files), do the following:
 
     ./gradlew idea
 
