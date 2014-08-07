@@ -31,5 +31,7 @@ abstract class CompanyMixin {
 	private XingDate beginDate;
 	@JsonProperty("description")
 	private String description;
+	@JsonProperty("until_now")
+	private Boolean untilNow;
 
 }

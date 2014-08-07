@@ -72,6 +72,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 		assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());
         assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
         assertEquals("1_abcdef", userProfile.getProfessionalExperience().getPrimaryCompany().getId());
+        assertEquals(Boolean.TRUE, userProfile.getProfessionalExperience().getPrimaryCompany().getUntilNow());
         assertEquals(EmploymentStatus.EMPLOYEE, userProfile.getEmploymentStatus());
         assertEquals(FormOfEmployment.FULL_TIME_EMPLOYEE, userProfile.getProfessionalExperience().getPrimaryCompany().getFormOfEmployment());
         assertEquals("42_abcdef", userProfile.getEducationalBackground().getPrimarySchool().getId());
