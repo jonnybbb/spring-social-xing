@@ -77,6 +77,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
         assertEquals("42_abcdef", userProfile.getEducationalBackground().getPrimarySchool().getId());
         assertEquals(2, userProfile.getEducationalBackground().getQualifications().size());
         assertEquals("PADI AOWD", userProfile.getEducationalBackground().getQualifications().get(1));
+        assertEquals(4, userProfile.getProfessionalExperience().getCompanies().size());
         
 	}	
 	
