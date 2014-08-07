@@ -67,6 +67,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 		mockServer.expect(requestTo(ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
 				.andRespond(withSuccess(new ClassPathResource("testdata/full_profile.json", getClass()), MediaType.APPLICATION_JSON));
 		XingProfile userProfile = xing.profileOperations().getUserProfile();
+		assertEquals(4, userProfile.getLanguages().size());
 		assertEquals("ACM, GI", userProfile.getOrganisationMember());
 		assertEquals("m", userProfile.getGender());
 		assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());

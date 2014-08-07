@@ -16,6 +16,7 @@
 package org.springframework.social.xing.api;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  * Model class containing a user's Xing profile information.
@@ -45,6 +46,7 @@ public class XingProfile implements Serializable {
     private EmploymentStatus employmentStatus;
     private ProfessionalExperience professionalExperience;
     private EducationalBackground educationalBackground;
+    private Map<Language, LanguageSkill> languages;
 
 
     public XingProfile() {
@@ -174,4 +176,8 @@ public class XingProfile implements Serializable {
     public EmploymentStatus getEmploymentStatus() {
         return employmentStatus;
     }
+    
+    public Map<Language, LanguageSkill> getLanguages() {
+		return languages;
+	}
 }
