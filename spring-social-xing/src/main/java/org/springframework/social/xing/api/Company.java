@@ -17,6 +17,7 @@ public class Company implements Serializable {
 	private XingDate beginDate;
 	private String description;
     private FormOfEmployment formOfEmployment;
+    private Boolean untilNow;
 
 	public String getId() {
 		return id;
@@ -65,4 +66,8 @@ public class Company implements Serializable {
     public FormOfEmployment getFormOfEmployment() {
         return formOfEmployment;
     }
+    
+    public Boolean getUntilNow() {
+		return untilNow;
+	}
 }

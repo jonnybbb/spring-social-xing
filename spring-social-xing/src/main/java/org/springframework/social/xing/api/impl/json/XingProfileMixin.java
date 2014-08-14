@@ -15,9 +15,12 @@
  */
 package org.springframework.social.xing.api.impl.json;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import org.springframework.social.xing.api.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -56,5 +59,7 @@ abstract class XingProfileMixin {
     private EmploymentStatus employmentStatus;
     @JsonProperty("form_of_employment")
     private FormOfEmployment formOfEmployment;
+    @JsonProperty("languages")
+    private Map<Language, LanguageSkill> languages;
 }
 
