@@ -1,11 +1,14 @@
+apply plugin: 'com.github.ben-manes.versions'
+
 buildscript {
     repositories {
         maven { url 'http://repo.springsource.org/plugins-release' }
-        maven { url 'http://jcenter.bintray.com' }
+        jcenter()
     }
     dependencies {
         classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.2.2'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.5-beta-6'
     }
 }
 
@@ -51,7 +54,7 @@ configure(allprojects) {
 configure(subprojects) { subproject ->
     apply from: "${rootProject.projectDir}/publish-maven.gradle"
     apply plugin: 'maven-publish'
-    apply plugin: 'bintray'
+    apply plugin: 'com.jfrog.bintray'
 
     jar {
         manifest.attributes['Implementation-Title'] = subproject.name
@@ -139,12 +142,6 @@ project('spring-social-xing') {
 configure(rootProject) {
     description = 'Spring Social Xing'
 
-    apply plugin: 'docbook-reference'
-
-    reference {
-        ext.sourceDir = file('src/reference/docbook')
-    }
-
     // don't publish the default jar for the root project
     configurations.archives.artifacts.clear()
 
@@ -186,9 +183,6 @@ configure(rootProject) {
             into 'api'
         }
 
-        from (reference) {
-            into 'reference'
-        }
     }
 
     task schemaZip(type: Zip) {
@@ -263,7 +257,7 @@ configure(rootProject) {
 
     task wrapper(type: Wrapper) {
         description = 'Generates gradlew[.bat] scripts'
-        gradleVersion = '1.12'
+        gradleVersion = '2.0'
     }
 
 }
