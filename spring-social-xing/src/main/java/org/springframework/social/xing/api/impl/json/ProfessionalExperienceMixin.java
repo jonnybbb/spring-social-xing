@@ -14,6 +14,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 abstract class ProfessionalExperienceMixin {
 
+	@JsonProperty("companies")
+	private List<Company> companies;
+	/**
+	 * deprecated by xing since "2014-05-08"
+	 */
+	@Deprecated
 	@JsonProperty("non_primary_companies")
 	private List<Company> nonPrimaryCompanies;
 	@JsonProperty("awards")
