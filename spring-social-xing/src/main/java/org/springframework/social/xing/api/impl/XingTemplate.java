@@ -35,6 +35,7 @@ import org.springframework.social.xing.api.ProfileOperations;
 import org.springframework.social.xing.api.Xing;
 import org.springframework.social.xing.api.impl.json.XingModule;
 import org.springframework.util.ClassUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
@@ -58,9 +59,26 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 
     private ObjectMapper objectMapper;
 
+    private final String xingBaseUrl;
+
     private static boolean interceptorsSupported = ClassUtils.isPresent("org.springframework.http.client.ClientHttpRequestInterceptor", XingTemplate.class.getClassLoader());
 
-    static final String BASE_URL = "https://api.xing.com/v1";
+	/**
+	 * Creates a new XingTemplate given the minimal amount of information needed to sign requests with OAuth 1 credentials.
+	 * @param xingBaseUrl the base url of xing, if empty {@link org.springframework.social.xing.api.impl.AbstractTemplate#DEFAULT_BASE_URL} will be used.
+	 * @param consumerKey the application's API key
+	 * @param consumerSecret the application's API secret
+	 * @param accessToken an access token acquired through OAuth authentication with Xing
+	 * @param accessTokenSecret an access token secret acquired through OAuth authentication with Xing
+	 */
+	public XingTemplate(String xingBaseUrl, String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
+		super(consumerKey, consumerSecret, accessToken, accessTokenSecret);
+		this.xingBaseUrl = xingBaseUrl;
+		
+		registerXingInJsonModule();
+		registerJsonFormatInterceptor();
+		initSubApis();
+	}
 
 	/**
 	 * Creates a new XingTemplate given the minimal amount of information needed to sign requests with OAuth 1 credentials.
@@ -70,10 +88,7 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	 * @param accessTokenSecret an access token secret acquired through OAuth authentication with Xing
 	 */
 	public XingTemplate(String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
-		super(consumerKey, consumerSecret, accessToken, accessTokenSecret);
-		registerXingInJsonModule();
-		registerJsonFormatInterceptor();
-		initSubApis();
+		this(null, consumerKey, consumerSecret, accessToken, accessTokenSecret);
 	}
 
 
@@ -130,8 +145,8 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	}
 	
 	private void initSubApis() {
-		profileOperations = new ProfileTemplate(getRestTemplate(), objectMapper);
-        connectionOperations = new ConnectionTemplate(getRestTemplate());
+		profileOperations = new ProfileTemplate(xingBaseUrl, getRestTemplate(), objectMapper);
+        connectionOperations = new ConnectionTemplate(xingBaseUrl, getRestTemplate());
     }
 
 
