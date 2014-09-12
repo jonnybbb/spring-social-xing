@@ -18,10 +18,15 @@ public class ConnectionTemplate extends AbstractTemplate implements ConnectionOp
     static final String CONNECTIONS_URL2 = "/users/me/contacts";
 
     private final RestOperations restOperations;
+    
 
     public ConnectionTemplate(String xingBaseUrl, RestOperations restOperations) {
     	super(xingBaseUrl);
         this.restOperations = restOperations;
+    }
+
+    public ConnectionTemplate(RestOperations restOperations) {
+    	this(null, restOperations);
     }
 
     public List<XingProfile> getConnections() {
