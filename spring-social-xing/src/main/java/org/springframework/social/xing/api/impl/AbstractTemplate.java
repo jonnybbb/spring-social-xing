@@ -32,6 +32,10 @@ abstract class AbstractTemplate {
 	
     static final String DEFAULT_BASE_URL = "https://api.xing.com/v1";
     private final String xingBaseUrl;
+    
+    public AbstractTemplate() {
+    	this(null);
+    }
 
     /**
      * 
