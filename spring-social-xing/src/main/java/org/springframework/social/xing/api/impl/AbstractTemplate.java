@@ -21,12 +21,32 @@ import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.util.StringUtils;
+
 /**
  * Base Template extended by various specific API Templates
  * 
  * @author Robert Drysdale
  */
 abstract class AbstractTemplate {
+	
+    static final String DEFAULT_BASE_URL = "https://api.xing.com/v1";
+    private final String xingBaseUrl;
+    
+    public AbstractTemplate() {
+    	this(null);
+    }
+
+    /**
+     * 
+     * @param xingBaseUrl will default to {@link #DEFAULT_BASE_URL} if empty
+     */
+    public AbstractTemplate(String xingBaseUrl) {
+		if (StringUtils.isEmpty(xingBaseUrl)) {
+			xingBaseUrl = AbstractTemplate.DEFAULT_BASE_URL;
+    	}
+    	this.xingBaseUrl = xingBaseUrl;
+    }
 
 	/** Captures URI template variable names. */
 	private static final Pattern NAMES_PATTERN = Pattern.compile("\\{([^/]+?)\\}");
@@ -111,5 +131,9 @@ abstract class AbstractTemplate {
          return '!' == c || '$' == c || '&' == c || '\'' == c || '(' == c || ')' == c || '*' == c || '+' == c ||
                  ',' == c || ';' == c || '=' == c;
      }
+	
+	protected String buildUrl(String path) {
+        return xingBaseUrl + path;
+	}
 
 }

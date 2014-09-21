@@ -23,8 +23,6 @@ import org.springframework.web.client.RestOperations;
 
 import java.util.List;
 
-import static org.springframework.social.xing.api.impl.XingTemplate.BASE_URL;
-
 /**
  * Class that implements operations for Profile API
  *
@@ -34,8 +32,8 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations {
 
     private RestOperations restOperations;
 
-    static final String USERS_URL = BASE_URL + "/users/{id}.json";
-    static final String FIND_BY_EMAILS = BASE_URL + "/find_by_emails";
+    static final String USERS_URL = "/users/{id}.json";
+    static final String FIND_BY_EMAILS = "/find_by_emails";
 
     static String FULL_PROFILE_FIELDS = "birth_date," +
             "photo_urls," +
@@ -54,9 +52,14 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations {
             "display_name";
     private ObjectMapper objectMapper;
 
-    public ProfileTemplate(RestOperations restOperations, ObjectMapper objectMapper) {
+    public ProfileTemplate(String xingBaseUrl, RestOperations restOperations, ObjectMapper objectMapper) {
+    	super(xingBaseUrl);
         this.restOperations = restOperations;
         this.objectMapper = objectMapper;
+    }
+
+    public ProfileTemplate(RestOperations restOperations, ObjectMapper objectMapper) {
+    	this(null, restOperations, objectMapper);
     }
 
     public String getProfileId() {
@@ -68,7 +71,7 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations {
     }
 
     public XingProfile getProfileById(String id) {
-        List<XingProfile> profiles = restOperations.getForObject(USERS_URL, XingProfiles.class, id).getProfiles();
+        List<XingProfile> profiles = restOperations.getForObject(buildUrl(USERS_URL), XingProfiles.class, id).getProfiles();
         return profiles.get(0);
 
     }

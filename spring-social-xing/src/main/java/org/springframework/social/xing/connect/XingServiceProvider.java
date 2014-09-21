@@ -20,21 +20,32 @@ import org.springframework.social.xing.api.Xing;
 import org.springframework.social.xing.api.impl.XingTemplate;
 import org.springframework.social.oauth1.AbstractOAuth1ServiceProvider;
 import org.springframework.social.oauth1.OAuth1Template;
+import org.springframework.util.StringUtils;
 
 /**
  * Xing ServiceProvider implementation.
  * @author Johannes Buehler
  */
 public class XingServiceProvider extends AbstractOAuth1ServiceProvider<Xing> {
-
-	public XingServiceProvider(String consumerKey, String consumerSecret) {
+	
+	private final String xingBaseUrl;
+	
+	static final String DEFAULT_XING_BASE = "https://api.xing.com/v1";
+	
+	public XingServiceProvider(String xingBaseUrl, String consumerKey, String consumerSecret) {
 		super(consumerKey, consumerSecret, new OAuth1Template(consumerKey, consumerSecret,
-			"https://api.xing.com/v1/request_token",
-			"https://api.xing.com/v1/authorize",
-			"https://api.xing.com/v1/access_token", OAuth1Version.CORE_10_REVISION_A));
+				StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_XING_BASE : xingBaseUrl + "/request_token",
+				StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_XING_BASE : xingBaseUrl + "/authorize",
+				StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_XING_BASE : xingBaseUrl + "/access_token",
+				OAuth1Version.CORE_10_REVISION_A));
+		this.xingBaseUrl = xingBaseUrl;
 	}
 
+	public XingServiceProvider(String consumerKey, String consumerSecret) {
+		this(null, consumerKey, consumerSecret);
+	}
+	
 	public Xing getApi(String accessToken, String secret) {
-		return new XingTemplate(getConsumerKey(), getConsumerSecret(), accessToken, secret);
+		return new XingTemplate(xingBaseUrl, getConsumerKey(), getConsumerSecret(), accessToken, secret);
 	}
 }

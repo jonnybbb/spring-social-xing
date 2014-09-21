@@ -24,8 +24,12 @@ import org.springframework.social.xing.api.Xing;
  */
 public class XingConnectionFactory extends OAuth1ConnectionFactory<Xing>{
 
+	public XingConnectionFactory(String xingBaseUrl, String consumerKey, String consumerSecret) {
+		super("xing", new XingServiceProvider(xingBaseUrl, consumerKey, consumerSecret), new XingAdapter());
+	}
+
 	public XingConnectionFactory(String consumerKey, String consumerSecret) {
-		super("xing", new XingServiceProvider(consumerKey, consumerSecret), new XingAdapter());
+		this(null, consumerKey, consumerKey);
 	}
 
 }

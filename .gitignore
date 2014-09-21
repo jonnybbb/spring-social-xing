@@ -12,3 +12,6 @@ spring-social-core/src/test/java/exploration
 *.log
 *.bak
 target/
+/bin/
+/.classpath
+/.project
