@@ -43,7 +43,7 @@ public class XingApiHelper implements ApiHelper<Xing> {
 
 	public Xing getApi() {
 		if (logger.isDebugEnabled()) {
-			logger.debug("Getting API binding instance for LinkedIn");
+			logger.debug("Getting API binding instance for Xing");
 		}
 
 		Connection<Xing> connection = usersConnectionRepository.createConnectionRepository(userIdSource.getUserId()).findPrimaryConnection(Xing.class);
