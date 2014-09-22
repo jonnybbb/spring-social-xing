@@ -29,7 +29,7 @@ public class XingConnectionFactory extends OAuth1ConnectionFactory<Xing>{
 	}
 
 	public XingConnectionFactory(String consumerKey, String consumerSecret) {
-		this(null, consumerKey, consumerKey);
+		this(null, consumerKey, consumerSecret);
 	}
 
 }

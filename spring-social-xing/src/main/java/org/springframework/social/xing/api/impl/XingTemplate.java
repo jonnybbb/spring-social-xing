@@ -54,6 +54,8 @@ import java.util.List;
  */
 public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 
+    static final String DEFAULT_BASE_URL = "https://api.xing.com/v1";
+
     private ProfileOperations profileOperations;
     private ConnectionOperations connectionOperations;
 
@@ -62,6 +64,7 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
     private final String xingBaseUrl;
 
     private static boolean interceptorsSupported = ClassUtils.isPresent("org.springframework.http.client.ClientHttpRequestInterceptor", XingTemplate.class.getClassLoader());
+
 
 	/**
 	 * Creates a new XingTemplate given the minimal amount of information needed to sign requests with OAuth 1 credentials.
@@ -73,8 +76,9 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	 */
 	public XingTemplate(String xingBaseUrl, String consumerKey, String consumerSecret, String accessToken, String accessTokenSecret) {
 		super(consumerKey, consumerSecret, accessToken, accessTokenSecret);
-		this.xingBaseUrl = xingBaseUrl;
-		
+
+        this.xingBaseUrl =  StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_BASE_URL : xingBaseUrl;;
+
 		registerXingInJsonModule();
 		registerJsonFormatInterceptor();
 		initSubApis();
@@ -104,9 +108,9 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
     public RestOperations restOperations() {
 		return getRestTemplate();
 	}
-	
+
 	// private helpers
-	
+
 	private void registerXingInJsonModule() {
 		List<HttpMessageConverter<?>> converters = getRestTemplate().getMessageConverters();
 		for (HttpMessageConverter<?> converter : converters) {
@@ -123,7 +127,7 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 			}
 		}
 	}
-	
+
 	/*
 	 * Have to register custom interceptor to
 	 * set  "x-li-format: "json" header as
@@ -131,7 +135,7 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 	 * which suggests its expecting xml rather than json.
 	 * API appears to ignore Content-Type header
 	 */
-	private void registerJsonFormatInterceptor() {		
+	private void registerJsonFormatInterceptor() {
 		RestTemplate restTemplate = getRestTemplate();
 		if (interceptorsSupported) {
 			List<ClientHttpRequestInterceptor> interceptors = restTemplate.getInterceptors();
@@ -143,14 +147,14 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 			restTemplate.setRequestFactory(newRequestFactory);
 		}
 	}
-	
+
 	private void initSubApis() {
 		profileOperations = new ProfileTemplate(xingBaseUrl, getRestTemplate(), objectMapper);
         connectionOperations = new ConnectionTemplate(xingBaseUrl, getRestTemplate());
     }
 
 
-	
+
 	private static final class JsonFormatInterceptor implements ClientHttpRequestInterceptor {
 		public ClientHttpResponse intercept(HttpRequest request, byte[] body,
 				ClientHttpRequestExecution execution) throws IOException {
@@ -159,7 +163,7 @@ public class XingTemplate extends AbstractOAuth1ApiBinding implements Xing {
 			contentTypeResourceRequest.getHeaders().add("Accept-Encoding", "identity");
             return execution.execute(contentTypeResourceRequest, body);
 		}
-		
+
 	}
 
 }

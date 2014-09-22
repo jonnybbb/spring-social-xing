@@ -34,14 +34,18 @@ public class XingServiceProvider extends AbstractOAuth1ServiceProvider<Xing> {
 	
 	public XingServiceProvider(String xingBaseUrl, String consumerKey, String consumerSecret) {
 		super(consumerKey, consumerSecret, new OAuth1Template(consumerKey, consumerSecret,
-				StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_XING_BASE : xingBaseUrl + "/request_token",
-				StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_XING_BASE : xingBaseUrl + "/authorize",
-				StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_XING_BASE : xingBaseUrl + "/access_token",
+                getBaseUrl(xingBaseUrl) + "/request_token",
+                getBaseUrl(xingBaseUrl) + "/authorize",
+                getBaseUrl(xingBaseUrl) + "/access_token",
 				OAuth1Version.CORE_10_REVISION_A));
-		this.xingBaseUrl = xingBaseUrl;
+		this.xingBaseUrl = getBaseUrl(xingBaseUrl);
 	}
 
-	public XingServiceProvider(String consumerKey, String consumerSecret) {
+    private static String getBaseUrl(String xingBaseUrl) {
+        return StringUtils.isEmpty(xingBaseUrl) ? DEFAULT_XING_BASE : xingBaseUrl;
+    }
+
+    public XingServiceProvider(String consumerKey, String consumerSecret) {
 		this(null, consumerKey, consumerSecret);
 	}
 	

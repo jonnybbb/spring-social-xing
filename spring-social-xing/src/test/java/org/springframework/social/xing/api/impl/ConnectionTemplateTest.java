@@ -36,7 +36,7 @@ public class ConnectionTemplateTest extends AbstractXingApiTest {
 
     @Test
     public void getConections() {
-        mockServer.expect(requestTo(AbstractTemplate.DEFAULT_BASE_URL + ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
+        mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
                 .andRespond(withSuccess(new ClassPathResource("testdata/connections.json", getClass()), MediaType.APPLICATION_JSON));
         List<XingProfile> profiles = xing.connectionOperations().getConnections();
         assertThat(profiles, hasSize(10));
@@ -48,7 +48,7 @@ public class ConnectionTemplateTest extends AbstractXingApiTest {
 
     @Test
     public void getConectionsWithProfil() {
-        mockServer.expect(requestTo(AbstractTemplate.DEFAULT_BASE_URL + ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
+        mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ConnectionTemplate.CONNECTIONS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
                 .andRespond(withSuccess(new ClassPathResource("testdata/connections_with_fields.json", getClass()), MediaType.APPLICATION_JSON));
         List<XingProfile> profiles = xing.connectionOperations().getConnections();
         assertThat(profiles, hasSize(5));

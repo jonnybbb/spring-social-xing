@@ -41,7 +41,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 
 	@Test
 	public void getUserProfile() {
-		mockServer.expect(requestTo(AbstractTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
+		mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
 				.andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
 		XingProfile userProfile = xing.profileOperations().getUserProfile();
 		assertEquals("6628146_33f97b", userProfile.getId());
@@ -64,7 +64,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 	
 	@Test
 	public void getFullUserProfile() {
-		mockServer.expect(requestTo(AbstractTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
+		mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
 				.andRespond(withSuccess(new ClassPathResource("testdata/full_profile.json", getClass()), MediaType.APPLICATION_JSON));
 		XingProfile userProfile = xing.profileOperations().getUserProfile();
 		assertEquals(4, userProfile.getLanguages().size());
@@ -86,7 +86,7 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 
 	@Test
 	public void getProfileId() {
-		mockServer.expect(requestTo(AbstractTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
+		mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
 				.andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
 		assertEquals("6628146_33f97b", xing.profileOperations().getProfileId());
 	}

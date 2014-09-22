@@ -15,13 +15,13 @@
  */
 package org.springframework.social.xing.api.impl;
 
+import org.springframework.util.Assert;
+
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.springframework.util.StringUtils;
 
 /**
  * Base Template extended by various specific API Templates
@@ -30,7 +30,6 @@ import org.springframework.util.StringUtils;
  */
 abstract class AbstractTemplate {
 	
-    static final String DEFAULT_BASE_URL = "https://api.xing.com/v1";
     private final String xingBaseUrl;
     
     public AbstractTemplate() {
@@ -42,9 +41,7 @@ abstract class AbstractTemplate {
      * @param xingBaseUrl will default to {@link #DEFAULT_BASE_URL} if empty
      */
     public AbstractTemplate(String xingBaseUrl) {
-		if (StringUtils.isEmpty(xingBaseUrl)) {
-			xingBaseUrl = AbstractTemplate.DEFAULT_BASE_URL;
-    	}
+        Assert.hasText(xingBaseUrl);
     	this.xingBaseUrl = xingBaseUrl;
     }
 
