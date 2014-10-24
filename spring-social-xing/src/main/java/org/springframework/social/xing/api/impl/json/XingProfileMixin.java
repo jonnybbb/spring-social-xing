@@ -15,6 +15,7 @@
  */
 package org.springframework.social.xing.api.impl.json;
 
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -41,6 +42,8 @@ abstract class XingProfileMixin {
     private PhotoUrls photoUrls;
     @JsonProperty("interests")
     private String interests;
+    @JsonProperty("badges")
+    private List<String> badges;
     @JsonProperty("wants")
     private String wants;
     @JsonProperty("organisation_member")

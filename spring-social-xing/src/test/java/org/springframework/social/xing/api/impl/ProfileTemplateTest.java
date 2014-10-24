@@ -15,6 +15,8 @@
  */
 package org.springframework.social.xing.api.impl;
 
+import java.util.List;
+
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
@@ -47,6 +49,11 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 		assertEquals("6628146_33f97b", userProfile.getId());
 		assertEquals("Johannes", userProfile.getFirstName());
 		assertEquals("Bühler", userProfile.getLastName());
+
+		List<String> badges = userProfile.getBadges();
+		assertEquals(1, badges.size());
+		assertEquals("PREMIUM", badges.get(0));
+
         assertThat(userProfile.getPermalink(), is(not(nullValue())));
         assertThat(userProfile.getProfessionalExperience(), is(not(nullValue())));
         assertEquals(2, userProfile.getProfessionalExperience().getNonPrimaryCompanies().size());
@@ -70,6 +77,12 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 		assertEquals(4, userProfile.getLanguages().size());
 		assertEquals("ACM, GI", userProfile.getOrganisationMember());
 		assertEquals("m", userProfile.getGender());
+
+		List<String> badges = userProfile.getBadges();
+		assertEquals(2, badges.size());
+		assertEquals("PREMIUM", badges.get(0));
+		assertEquals("MODERATOR", badges.get(1));
+
 		assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());
         assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
         assertEquals("1_abcdef", userProfile.getProfessionalExperience().getPrimaryCompany().getId());

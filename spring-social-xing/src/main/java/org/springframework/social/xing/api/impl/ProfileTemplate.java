@@ -38,6 +38,7 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations {
     static String FULL_PROFILE_FIELDS = "birth_date," +
             "photo_urls," +
             "interests," +
+            "badges," +
             "wants," +
             "organisation_member," +
             "gender," +

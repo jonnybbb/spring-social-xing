@@ -16,6 +16,7 @@
 package org.springframework.social.xing.api;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +28,8 @@ import java.util.Map;
 public class XingProfile implements Serializable {
 
 
-    private static final long serialVersionUID = -6567173579938863785L;
+    private static final long serialVersionUID = 6579398072819111682L;
+    private List<String> badges;
     private BirthDate birthDate;
     private PhotoUrls photoUrls;
     private String interests;
@@ -69,6 +71,10 @@ public class XingProfile implements Serializable {
     }
 
 
+    public void setBadges(List<String> badges) {
+        this.badges = badges;
+    }
+
     public void setBirthDate(BirthDate birthDate) {
         this.birthDate = birthDate;
     }
@@ -105,6 +111,10 @@ public class XingProfile implements Serializable {
         this.haves = haves;
     }
 
+    public List<String> getBadges() {
+        return badges;
+    }
+
     public BirthDate getBirthDate() {
         return birthDate;
     }
@@ -117,7 +127,7 @@ public class XingProfile implements Serializable {
         return interests;
     }
 
-    public String getWants() {
+	public String getWants() {
         return wants;
     }
 
