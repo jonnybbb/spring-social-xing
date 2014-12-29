@@ -127,7 +127,7 @@ public class XingProfile implements Serializable {
         return interests;
     }
 
-	public String getWants() {
+    public String getWants() {
         return wants;
     }
 
@@ -186,8 +186,8 @@ public class XingProfile implements Serializable {
     public EmploymentStatus getEmploymentStatus() {
         return employmentStatus;
     }
-    
+
     public Map<Language, LanguageSkill> getLanguages() {
-		return languages;
-	}
+        return languages;
+    }
 }

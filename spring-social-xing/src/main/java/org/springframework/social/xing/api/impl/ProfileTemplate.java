@@ -54,13 +54,13 @@ class ProfileTemplate extends AbstractTemplate implements ProfileOperations {
     private ObjectMapper objectMapper;
 
     public ProfileTemplate(String xingBaseUrl, RestOperations restOperations, ObjectMapper objectMapper) {
-    	super(xingBaseUrl);
+        super(xingBaseUrl);
         this.restOperations = restOperations;
         this.objectMapper = objectMapper;
     }
 
     public ProfileTemplate(RestOperations restOperations, ObjectMapper objectMapper) {
-    	this(null, restOperations, objectMapper);
+        this(null, restOperations, objectMapper);
     }
 
     public String getProfileId() {

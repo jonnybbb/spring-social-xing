@@ -7,16 +7,20 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.2.2'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:0.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.5-beta-6'
     }
 }
 
+
+
 configure(allprojects) {
+
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
     apply plugin: 'maven-publish'
+    apply plugin: 'maven'
 
     group = 'org.springframework.social'
 
@@ -68,26 +72,16 @@ configure(subprojects) { subproject ->
         }
     }
 
-    javadoc {
-        options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
-        options.author = true
-        options.header = project.name
-        //options.overview = "${projectDir}/src/main/java/overview.html"
-    }
 
     task sourcesJar(type: Jar, dependsOn:classes) {
         classifier = 'sources'
         from sourceSets.main.allJava
     }
 
-    task javadocJar(type: Jar) {
-        classifier = 'javadoc'
-        from javadoc
-    }
 
     artifacts {
         archives sourcesJar
-        archives javadocJar
+
     }
 
     publishing {
@@ -97,10 +91,6 @@ configure(subprojects) { subproject ->
 
                 artifact sourcesJar {
                     classifier "sources"
-                }
-
-                artifact javadocJar {
-                    classifier "javadoc"
                 }
             }
         }
@@ -148,42 +138,7 @@ configure(rootProject) {
     dependencies { // for integration tests
     }
     
-    task api(type: Javadoc) {
-        group = 'Documentation'
-        description = 'Generates aggregated Javadoc API documentation.'
-        title = "${rootProject.description} ${version} API"
-        options.memberLevel = org.gradle.external.javadoc.JavadocMemberLevel.PROTECTED
-        options.author = true
-        options.header = rootProject.description
-        options.overview = 'src/api/overview.html'
-        options.links(
-            'http://docs.jboss.org/jbossas/javadoc/4.0.5/connector'
-        )
-        source subprojects.collect { project ->
-            project.sourceSets.main.allJava
-        }
-        destinationDir = new File(buildDir, "api")
-        classpath = files(subprojects.collect { project ->
-            project.sourceSets.main.compileClasspath
-        })
-        maxMemory = '1024m'
-    }
 
-    task docsZip(type: Zip) {
-        group = 'Distribution'
-        classifier = 'docs'
-        description = "Builds -${classifier} archive containing api and reference " +
-            "for deployment at static.springframework.org/spring-social/docs."
-
-        from('src/dist') {
-            include 'changelog.txt'
-        }
-
-        from (api) {
-            into 'api'
-        }
-
-    }
 
     task schemaZip(type: Zip) {
         group = 'Distribution'
@@ -212,7 +167,7 @@ configure(rootProject) {
         }
     }
 
-    task distZip(type: Zip, dependsOn: [docsZip, schemaZip]) {
+    task distZip(type: Zip, dependsOn: [schemaZip]) {
         group = 'Distribution'
         classifier = 'dist'
         description = "Builds -${classifier} archive, containing all jars and docs, " +
@@ -228,9 +183,6 @@ configure(rootProject) {
             expand(copyright: new Date().format('yyyy'), version: project.version)
         }
 
-        from(zipTree(docsZip.archivePath)) {
-            into "${baseDir}/docs"
-        }
 
         from(zipTree(schemaZip.archivePath)) {
             into "${baseDir}/schema"
@@ -250,7 +202,7 @@ configure(rootProject) {
     }
 
     artifacts {
-        archives docsZip
+
         archives schemaZip
         archives distZip
     }
@@ -276,12 +228,6 @@ task updateRootDocs << {
         into "${rootProject.projectDir}"
         include 'license.txt'
         rename { filename -> 'LICENSE' }
-    }
-}
-
-model {
-    tasks.generatePomFileForMavenCustomPublication {
-        destination = file("$buildDir/pom.xml")
     }
 }
 

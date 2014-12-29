@@ -15,8 +15,6 @@
  */
 package org.springframework.social.xing.api.impl;
 
-import java.util.List;
-
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
@@ -25,6 +23,8 @@ import org.springframework.social.xing.api.CareerLevel;
 import org.springframework.social.xing.api.EmploymentStatus;
 import org.springframework.social.xing.api.FormOfEmployment;
 import org.springframework.social.xing.api.XingProfile;
+
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
@@ -41,18 +41,18 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
  */
 public class ProfileTemplateTest extends AbstractXingApiTest {
 
-	@Test
-	public void getUserProfile() {
-		mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
-				.andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
-		XingProfile userProfile = xing.profileOperations().getUserProfile();
-		assertEquals("6628146_33f97b", userProfile.getId());
-		assertEquals("Johannes", userProfile.getFirstName());
-		assertEquals("Bühler", userProfile.getLastName());
+    @Test
+    public void getUserProfile() {
+        mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
+                .andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
+        XingProfile userProfile = xing.profileOperations().getUserProfile();
+        assertEquals("6628146_33f97b", userProfile.getId());
+        assertEquals("Johannes", userProfile.getFirstName());
+        assertEquals("Bühler", userProfile.getLastName());
 
-		List<String> badges = userProfile.getBadges();
-		assertEquals(1, badges.size());
-		assertEquals("PREMIUM", badges.get(0));
+        List<String> badges = userProfile.getBadges();
+        assertEquals(1, badges.size());
+        assertEquals("PREMIUM", badges.get(0));
 
         assertThat(userProfile.getPermalink(), is(not(nullValue())));
         assertThat(userProfile.getProfessionalExperience(), is(not(nullValue())));
@@ -65,25 +65,25 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
         assertEquals(2, userProfile.getEducationalBackground().getSchools().size());
         assertEquals(3, userProfile.getEducationalBackground().getQualifications().size());
         assertEquals("Java Design Patterns Course Certificate", userProfile.getEducationalBackground().getQualifications().get(2));
-        
-	}
-	
-	
-	@Test
-	public void getFullUserProfile() {
-		mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
-				.andRespond(withSuccess(new ClassPathResource("testdata/full_profile.json", getClass()), MediaType.APPLICATION_JSON));
-		XingProfile userProfile = xing.profileOperations().getUserProfile();
-		assertEquals(4, userProfile.getLanguages().size());
-		assertEquals("ACM, GI", userProfile.getOrganisationMember());
-		assertEquals("m", userProfile.getGender());
 
-		List<String> badges = userProfile.getBadges();
-		assertEquals(2, badges.size());
-		assertEquals("PREMIUM", badges.get(0));
-		assertEquals("MODERATOR", badges.get(1));
+    }
 
-		assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());
+
+    @Test
+    public void getFullUserProfile() {
+        mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
+                .andRespond(withSuccess(new ClassPathResource("testdata/full_profile.json", getClass()), MediaType.APPLICATION_JSON));
+        XingProfile userProfile = xing.profileOperations().getUserProfile();
+        assertEquals(4, userProfile.getLanguages().size());
+        assertEquals("ACM, GI", userProfile.getOrganisationMember());
+        assertEquals("m", userProfile.getGender());
+
+        List<String> badges = userProfile.getBadges();
+        assertEquals(2, badges.size());
+        assertEquals("PREMIUM", badges.get(0));
+        assertEquals("MODERATOR", badges.get(1));
+
+        assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());
         assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
         assertEquals("1_abcdef", userProfile.getProfessionalExperience().getPrimaryCompany().getId());
         assertEquals(Boolean.TRUE, userProfile.getProfessionalExperience().getPrimaryCompany().getUntilNow());
@@ -93,16 +93,16 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
         assertEquals(2, userProfile.getEducationalBackground().getQualifications().size());
         assertEquals("PADI AOWD", userProfile.getEducationalBackground().getQualifications().get(1));
         assertEquals(4, userProfile.getProfessionalExperience().getCompanies().size());
-        
-	}	
-	
 
-	@Test
-	public void getProfileId() {
-		mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}","me"))).andExpect(method(GET))
-				.andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
-		assertEquals("6628146_33f97b", xing.profileOperations().getProfileId());
-	}
+    }
+
+
+    @Test
+    public void getProfileId() {
+        mockServer.expect(requestTo(XingTemplate.DEFAULT_BASE_URL + ProfileTemplate.USERS_URL.replaceFirst("\\{id\\}", "me"))).andExpect(method(GET))
+                .andRespond(withSuccess(new ClassPathResource("testdata/profile.json", getClass()), MediaType.APPLICATION_JSON));
+        assertEquals("6628146_33f97b", xing.profileOperations().getProfileId());
+    }
 
     @Test
     public void fullProfilFieldsAsString() throws Exception {
