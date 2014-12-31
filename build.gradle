@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.2.2'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.5-beta-6'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.5'
     }
 }
 
