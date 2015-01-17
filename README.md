@@ -1,3 +1,5 @@
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=jonnybbb&url=https%3A%2F%2Fgithub.com%2Fjonnybbb%2Fspring-social-xing&title=Spring Social Xing&language=&tags=github&category=software)
+
 [![Build Status](https://travis-ci.org/jonnybbb/spring-social-xing.svg?branch=master)](https://travis-ci.org/jonnybbb/spring-social-xing)
 
 # Spring Social Xing
