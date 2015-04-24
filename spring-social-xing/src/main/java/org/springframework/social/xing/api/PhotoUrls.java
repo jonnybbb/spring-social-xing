@@ -6,14 +6,19 @@ public class PhotoUrls implements Serializable {
 
 	private static final long serialVersionUID = 2190753534530022310L;
 
+	@Deprecated
 	private String thumb;
 
+	@Deprecated
 	private String miniThumb;
 
+	@Deprecated
 	private String mediumThumb;
 
+	@Deprecated
 	private String maxiThumb;
 
+	@Deprecated
 	private String large;
 
 	private String size_32x32;
@@ -34,42 +39,52 @@ public class PhotoUrls implements Serializable {
 
 	private String size_Original;
 
+	@Deprecated
 	public String getMediumThumb() {
 		return mediumThumb;
 	}
 
+	@Deprecated
 	public void setMediumThumb(String mediumThumb) {
 		this.mediumThumb = mediumThumb;
 	}
 
+	@Deprecated
 	public String getThumb() {
 		return thumb;
 	}
 
+	@Deprecated
 	public void setThumb(String thumb) {
 		this.thumb = thumb;
 	}
 
+	@Deprecated
 	public String getMiniThumb() {
 		return miniThumb;
 	}
 
+	@Deprecated
 	public void setMiniThumb(String miniThumb) {
 		this.miniThumb = miniThumb;
 	}
 
+	@Deprecated
 	public String getMaxiThumb() {
 		return maxiThumb;
 	}
 
+	@Deprecated
 	public void setMaxiThumb(String maxiThumb) {
 		this.maxiThumb = maxiThumb;
 	}
 
+	@Deprecated
 	public String getLarge() {
 		return large;
 	}
 
+	@Deprecated
 	public void setLarge(String large) {
 		this.large = large;
 	}
