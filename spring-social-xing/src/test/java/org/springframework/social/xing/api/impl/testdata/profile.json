@@ -15,8 +15,17 @@
                 "thumb": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.30x40.jpg",
                 "mini_thumb": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.18x24.jpg",
                 "maxi_thumb": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.70x93.jpg",
-                "large": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.140x185.jpg"
-            },
+                "large": "https://m1.xing.com/pubimg/users/f/8/7/a85609644.6628146,2.140x185.jpg",
+				"size_32x32": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.32x32.jpg",
+				"size_48x48": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.48x48.jpg",
+				"size_64x64": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.64x64.jpg",
+				"size_96x96": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.96x96.jpg",
+				"size_128x128": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.128x128.jpg",
+				"size_192x192": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.192x192.jpg",
+				"size_256x256": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.256x256.jpg",
+				"size_1024x1024": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.1024x1024.jpg",
+				"size_original": "http://www.xing.com/assets/frontend_minified/img/users/nobody_m.original.jpg"
+             },
             "time_zone": {
                 "utc_offset": 1,
                 "name": "Europe/Zurich"
