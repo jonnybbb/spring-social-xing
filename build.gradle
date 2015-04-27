@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.build.gradle:docbook-reference-plugin:0.2.2'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.1'
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.5'
     }
 }
@@ -125,7 +125,7 @@ project('spring-social-xing') {
         compile('commons-io:commons-io:2.4')
         testCompile("org.springframework:spring-test:$springVersion")
         testCompile("org.springframework.security:spring-security-crypto:$springSecurityVersion")
-        testCompile("org.apache.httpcomponents:httpclient:4.3.1", optional)
+        testCompile("org.apache.httpcomponents:httpclient:4.4.1", optional)
     }
 }
 
@@ -209,7 +209,7 @@ configure(rootProject) {
 
     task wrapper(type: Wrapper) {
         description = 'Generates gradlew[.bat] scripts'
-        gradleVersion = '2.0'
+        gradleVersion = '2.3'
     }
 
 }
