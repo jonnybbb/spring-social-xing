@@ -102,6 +102,18 @@ public class ProfileTemplateTest extends AbstractXingApiTest {
 		assertEquals("PADI AOWD", userProfile.getEducationalBackground().getQualifications().get(1));
 		assertEquals(4, userProfile.getProfessionalExperience().getCompanies().size());
 
+        assertEquals("max.mustermann@xing.com", userProfile.getActiveEmail());
+        assertThat(userProfile.getEducationalBackground(), is(not(nullValue())));
+        assertEquals("1_abcdef", userProfile.getProfessionalExperience().getPrimaryCompany().getId());
+        assertEquals(Boolean.TRUE, userProfile.getProfessionalExperience().getPrimaryCompany().getUntilNow());
+        assertEquals(EmploymentStatus.EMPLOYEE, userProfile.getEmploymentStatus());
+        assertEquals(FormOfEmployment.FULL_TIME_EMPLOYEE, userProfile.getProfessionalExperience().getPrimaryCompany().getFormOfEmployment());
+        assertEquals("42_abcdef", userProfile.getEducationalBackground().getPrimarySchool().getId());
+        assertEquals(2, userProfile.getEducationalBackground().getQualifications().size());
+        assertEquals("PADI AOWD", userProfile.getEducationalBackground().getQualifications().get(1));
+        assertEquals(4, userProfile.getProfessionalExperience().getCompanies().size());
+        assertEquals("max@mustermann.de", userProfile.getPrivateAddress().getEmail());
+       // assertThat(userProfile.getWebProfiles().getBlog(), CoreMatchers.is());
 	}
 
 	@Test

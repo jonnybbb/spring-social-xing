@@ -53,6 +53,8 @@ abstract class XingProfileMixin {
     private String pageName;
     @JsonProperty("business_address")
     private BusinessAddress businessAddress;
+    @JsonProperty("private_address")
+    private PrivateAddress privateAddress;
     @JsonProperty("haves")
     private String haves;
     @JsonProperty("professional_experience")
@@ -63,5 +65,10 @@ abstract class XingProfileMixin {
     private FormOfEmployment formOfEmployment;
     @JsonProperty("languages")
     private Map<Language, LanguageSkill> languages;
+
+    @JsonProperty("web_profiles")
+    private WebProfiles webProfiles;
+    @JsonProperty("instant_messaging_accounts")
+    private InstantMessagingAccounts instantMessagingAccounts;
 }
 

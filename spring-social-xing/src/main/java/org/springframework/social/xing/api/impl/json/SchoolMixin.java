@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by json2pojo
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SchoolMixin {
+abstract class SchoolMixin {
 	
 	@JsonProperty("id")
 	private String id;

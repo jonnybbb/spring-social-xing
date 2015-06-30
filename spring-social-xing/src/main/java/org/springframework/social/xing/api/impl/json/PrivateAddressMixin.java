@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Created by json2pojo
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-abstract class BusinessAddressMixin extends AddressMixin {
+abstract class PrivateAddressMixin extends AddressMixin{
 
 
 }

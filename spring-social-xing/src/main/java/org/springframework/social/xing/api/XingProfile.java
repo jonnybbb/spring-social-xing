@@ -38,6 +38,7 @@ public class XingProfile implements Serializable {
     private String gender;
     private String pageName;
     private BusinessAddress businessAddress;
+    private PrivateAddress privateAddress;
     private String haves;
     private String id;
     private String firstName;
@@ -45,10 +46,16 @@ public class XingProfile implements Serializable {
     private String permalink;
     private String activeEmail;
     private String displayName;
+    private TimeZone timeZone;
+    private List<String> premiumServices;
     private EmploymentStatus employmentStatus;
+    private WebProfiles webProfiles;
+    private InstantMessagingAccounts instantMessagingAccounts;
     private ProfessionalExperience professionalExperience;
     private EducationalBackground educationalBackground;
     private Map<Language, LanguageSkill> languages;
+
+
 
 
     public XingProfile() {
@@ -111,6 +118,22 @@ public class XingProfile implements Serializable {
         this.haves = haves;
     }
 
+    public void setPrivateAddress(PrivateAddress privateAddress) {
+        this.privateAddress = privateAddress;
+    }
+
+    public void setPremiumServices(List<String> premiumServices) {
+        this.premiumServices = premiumServices;
+    }
+
+    public void setWebProfiles(WebProfiles webProfiles) {
+        this.webProfiles = webProfiles;
+    }
+
+    public void setTimeZone(TimeZone timeZone) {
+        this.timeZone = timeZone;
+    }
+
     public List<String> getBadges() {
         return badges;
     }
@@ -145,6 +168,10 @@ public class XingProfile implements Serializable {
 
     public BusinessAddress getBusinessAddress() {
         return businessAddress;
+    }
+
+    public PrivateAddress getPrivateAddress() {
+        return privateAddress;
     }
 
     public String getHaves() {
@@ -189,5 +216,17 @@ public class XingProfile implements Serializable {
 
     public Map<Language, LanguageSkill> getLanguages() {
         return languages;
+    }
+
+    public InstantMessagingAccounts getInstantMessagingAccounts() {
+        return instantMessagingAccounts;
+    }
+
+    public List<String> getPremiumServices() {
+        return premiumServices;
+    }
+
+    public WebProfiles getWebProfiles() {
+        return webProfiles;
     }
 }
